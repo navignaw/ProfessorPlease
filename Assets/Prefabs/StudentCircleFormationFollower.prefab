@@ -179,7 +179,6 @@ GameObject:
   - 136: {fileID: 13654204}
   - 114: {fileID: 11450346}
   - 114: {fileID: 11402594}
-  - 114: {fileID: 11490724}
   - 114: {fileID: 11479386}
   m_Layer: 0
   m_Name: StudentCircleFormationFollower
@@ -1982,7 +1981,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119590}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2404,7 +2403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviors:
-  - {fileID: 0}
+  - {fileID: 11479386}
 --- !u!114 &11450346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2438,18 +2437,6 @@ MonoBehaviour:
   scale: .5
   pos: {x: 5, y: 0, z: 0}
   leader: {fileID: 113348, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
---- !u!114 &11490724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale: .5
 --- !u!136 &13654204
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2641,7 +2628,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: behaviors.Array.data[0]
       value: 
-      objectReference: {fileID: 11490724}
+      objectReference: {fileID: 11479386}
     - target: {fileID: 0}
       propertyPath: pos.x
       value: 5
