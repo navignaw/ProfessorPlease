@@ -155,10 +155,14 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: pos.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
+      propertyPath: m_Name
+      value: StudentCircleFormationFollower
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
@@ -170,6 +174,16 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1440977867}
   m_Script: {fileID: 11500000, guid: fb6da84cee00f64419a2c28986357049, type: 3}
+--- !u!1 &181193274 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 113348, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+  m_PrefabInternal: {fileID: 1267873509}
+--- !u!114 &181193276 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11490724, guid: c57b2efad6d11c545b41de1a3b70f799,
+    type: 2}
+  m_PrefabInternal: {fileID: 1267873509}
+  m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
 --- !u!114 &214926388 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52,
@@ -241,7 +255,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
-      value: StudentSquareFormationFollower (6)
+      value: StudentCircleFormationFollower (6)
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: behaviors.Array.data[0]
@@ -254,7 +268,7 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: scale
       value: .100000001
@@ -348,7 +362,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
-      value: StudentSquareFormationFollower (3)
+      value: StudentCircleFormationFollower (3)
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: behaviors.Array.data[0]
@@ -361,7 +375,7 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: scale
       value: .100000001
@@ -463,7 +477,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
-      value: StudentSquareFormationFollower (7)
+      value: StudentCircleFormationFollower (7)
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: behaviors.Array.data[0]
@@ -476,7 +490,7 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: scale
       value: .100000001
@@ -492,77 +506,6 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &975099803
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 11402594, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: behaviors.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .70710659
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -.707106948
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454696, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: .532675147
-      objectReference: {fileID: 0}
-    - target: {fileID: 454696, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .0703404471
-      objectReference: {fileID: 0}
-    - target: {fileID: 454696, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: .836132646
-      objectReference: {fileID: 0}
-    - target: {fileID: 454696, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -.110415131
-      objectReference: {fileID: 0}
-    - target: {fileID: 11402594, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: behaviors.Array.data[0]
-      value: 
-      objectReference: {fileID: 1231705162}
-    - target: {fileID: 11419726, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11419726, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &979714259 stripped
 GameObject:
@@ -629,7 +572,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
-      value: StudentSquareFormationFollower (2)
+      value: StudentCircleFormationFollower (2)
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: behaviors.Array.data[0]
@@ -642,7 +585,7 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: scale
       value: .100000001
@@ -724,7 +667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
-      value: StudentSquareFormationFollower (5)
+      value: StudentCircleFormationFollower (5)
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: behaviors.Array.data[0]
@@ -737,7 +680,7 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: scale
       value: .100000001
@@ -754,39 +697,108 @@ Prefab:
     - {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1231705160 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 113348, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
-  m_PrefabInternal: {fileID: 975099803}
---- !u!114 &1231705162 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11490724, guid: 4a34158ded2c82d43a4e7f14edb19835,
-    type: 2}
-  m_PrefabInternal: {fileID: 975099803}
-  m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
---- !u!114 &1231705168
-MonoBehaviour:
+--- !u!1001 &1267873509
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1231705160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3127ab50166e4db4c961966436d289a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  separation: 4
-  model: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
-  formation:
-  - {fileID: 979714259}
-  - {fileID: 896156564}
-  - {fileID: 670907301}
-  - {fileID: 264945122}
-  - {fileID: 437308390}
-  - {fileID: 1167679229}
-  - {fileID: 2027461868}
-  - {fileID: 949826846}
-  - {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .422618091
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.906307876
+      objectReference: {fileID: 0}
+    - target: {fileID: 436670, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 454696, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .532675207
+      objectReference: {fileID: 0}
+    - target: {fileID: 454696, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .0703404546
+      objectReference: {fileID: 0}
+    - target: {fileID: 454696, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .836132765
+      objectReference: {fileID: 0}
+    - target: {fileID: 454696, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.110415146
+      objectReference: {fileID: 0}
+    - target: {fileID: 11402594, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: behaviors.Array.data[0]
+      value: 
+      objectReference: {fileID: 181193276}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[0]
+      value: 
+      objectReference: {fileID: 979714259}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[1]
+      value: 
+      objectReference: {fileID: 896156564}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[2]
+      value: 
+      objectReference: {fileID: 670907301}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[3]
+      value: 
+      objectReference: {fileID: 264945122}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[4]
+      value: 
+      objectReference: {fileID: 437308390}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[5]
+      value: 
+      objectReference: {fileID: 1167679229}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[6]
+      value: 
+      objectReference: {fileID: 2027461868}
+    - target: {fileID: 11497582, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+      propertyPath: formation.Array.data[7]
+      value: 
+      objectReference: {fileID: 949826846}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1440977867
 Prefab:
   m_ObjectHideFlags: 0
@@ -848,7 +860,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
-      value: StudentSquareFormationFollower (1)
+      value: StudentCircleFormationFollower (1)
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: behaviors.Array.data[0]
@@ -861,7 +873,7 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: scale
       value: .100000001
@@ -935,7 +947,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
-      value: StudentSquareFormationFollower (4)
+      value: StudentCircleFormationFollower (4)
       objectReference: {fileID: 0}
     - target: {fileID: 11402594, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: behaviors.Array.data[0]
@@ -948,7 +960,7 @@ Prefab:
     - target: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: leader
       value: 
-      objectReference: {fileID: 1231705160}
+      objectReference: {fileID: 181193274}
     - target: {fileID: 11490724, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: scale
       value: .100000001
@@ -1037,7 +1049,7 @@ Transform:
   m_LocalScale: {x: 6, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &1929106845 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11479386, guid: a183f4eba88909244a0f1b97b06f8f52,
@@ -1129,7 +1141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &2027461868 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
@@ -1199,4 +1211,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1

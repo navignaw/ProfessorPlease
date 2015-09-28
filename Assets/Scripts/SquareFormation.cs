@@ -2,35 +2,38 @@
 using System.Collections;
 
 public class SquareFormation : MonoBehaviour {
-    public int size;
+    public float separation;
     public GameObject model;
-    private GameObject[] formation;
+    public GameObject[] formation;
+
 
     // Use this for initialization
     public void Start () {
-        formation = new GameObject[size];
         int i;
-        GameObject floor = GameObject.Find("Floor");
-        for (i = 0; i < size; i++) {
-            Vector3 pos = new Vector3 (
-                Random.value * floor.transform.localScale.x,
-                0.0f,
-                Random.value * floor.transform.localScale.z
-                );
-            GameObject student = Instantiate(model, transform.position, transform.rotation) as GameObject;
-            student.transform.parent = transform;
-            student.transform.localPosition = pos;
-            formation[i] = student;
+        // assumes size of array is a square
+        int side = Mathf.FloorToInt(Mathf.Sqrt(formation.Length + 1));
+        int leaderside = ((side - 1) / 2);
+        for (i = 0; i < formation.Length; i++) {
+            if (i < leaderside) {
+                formation[i].GetComponent<SquareFormationFollow>().pos = 
+                    new Vector3(-separation*(i+1), 0.0f, 0.0f);
+                Debug.Log(formation[i].GetComponent<SquareFormationFollow>().pos);
+            } else if (i < side - 1) {
+                formation[i].GetComponent<SquareFormationFollow>().pos = 
+                    new Vector3(separation*(i-leaderside+1), 0.0f, 0.0f);
+            }
+            else {
+                int row = ((i - side + 1) % side) - leaderside;
+                int col = Mathf.FloorToInt((i + 1) / side);
+                formation[i].GetComponent<SquareFormationFollow>().pos = 
+                    new Vector3(separation*row, 0.0f, -separation*col);
+            }
         }
     }
     
     // Update is called once per frame
     public void Update () {
-        /*int i;
-        for (i = 0; i < size; i++) {
-            formation[i].transform.position = 
-            formation[i].transform.position - (formation[i].transform.position - transform.position) * 0.01f;
-        }*/
+        //nothing to update?
     }
 
 }

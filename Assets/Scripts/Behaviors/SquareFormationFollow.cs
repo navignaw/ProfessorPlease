@@ -9,10 +9,9 @@ public class SquareFormationFollow : BaseBehavior {
 	public GameObject leader;
 
     public override Vector3 ComputeVelocity() {
-    	Vector3 baseRot = new Vector3(0.0f, 270.0f, 0.0f);
-    	Vector3 rot = leader.transform.rotation.eulerAngles - baseRot;
+    	Vector3 rot = leader.transform.rotation.eulerAngles;
         Quaternion qrot = Quaternion.Euler(rot.x, rot.y, rot.z);
-        Vector3 aim = (qrot * pos); // rotate it
+        Vector3 aim = qrot * pos;
     	Vector3 v = (leader.transform.position + aim - this.transform.position)* 5.0f;
         return v;
     }

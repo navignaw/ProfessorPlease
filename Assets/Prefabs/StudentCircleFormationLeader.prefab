@@ -180,9 +180,9 @@ GameObject:
   - 114: {fileID: 11450346}
   - 114: {fileID: 11402594}
   - 114: {fileID: 11490724}
-  - 114: {fileID: 11479386}
+  - 114: {fileID: 11497582}
   m_Layer: 0
-  m_Name: StudentSquareFormationFollower
+  m_Name: StudentCircleFormationLeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2424,20 +2424,6 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: .200000003
---- !u!114 &11479386
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb6da84cee00f64419a2c28986357049, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale: .5
-  pos: {x: 5, y: 0, z: 0}
-  leader: {fileID: 113348, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
 --- !u!114 &11490724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2450,6 +2436,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
+--- !u!114 &11497582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02af389b85e28de4583053e1808a344c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  model: {fileID: 0}
+  formation: []
 --- !u!136 &13654204
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2643,17 +2643,17 @@ Prefab:
       value: 
       objectReference: {fileID: 11490724}
     - target: {fileID: 0}
-      propertyPath: pos.x
-      value: 5
+      propertyPath: size
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: scale
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: leader
+      propertyPath: model
       value: 
-      objectReference: {fileID: 113348, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
+      objectReference: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
+    - target: {fileID: 0}
+      propertyPath: radius
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113348}
