@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CircleFormation : MonoBehaviour {
-    public float radius;
+public class TriangleFormation : MonoBehaviour {
+    public float separation;
     public GameObject[] formation;
 
     // Use this for initialization
     public void Start () {
         int i;
-        int total = formation.Length + 1;
+        int row = -1;
+        int col = 1;
         for (i = 0; i < formation.Length; i++) {
-            float angle = 2 * Mathf.PI * (i+1) / total;
-            Vector3 normCoord = new Vector3(Mathf.Sin(angle), 0.0f, Mathf.Cos(angle) - 1.0f);
+            if (row > col) {
+                col++;
+                row = -row;
+            }
+            Vector3 normCoord = new Vector3(row, 0.0f, -col);
             formation[i].GetComponent<SquareFormationFollow>().pos = 
-                radius * normCoord;
+                separation * normCoord;
+            row++;
             formation[i].GetComponent<SquareFormationFollow>().leader = this.gameObject;
         }
     }

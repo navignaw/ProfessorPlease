@@ -28,6 +28,7 @@ public class SquareFormation : MonoBehaviour {
                 formation[i].GetComponent<SquareFormationFollow>().pos = 
                     new Vector3(separation*row, 0.0f, -separation*col);
             }
+            formation[i].GetComponent<SquareFormationFollow>().leader = this.gameObject;
         }
     }
     
