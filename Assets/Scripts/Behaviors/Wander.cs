@@ -11,7 +11,6 @@ public class Wander : BaseBehavior {
 	public float angleChange = 0.1f; // change in angle per frame
 
 	public override Vector3 ComputeVelocity()  {
-        print(wanderAngle);
 		// based on wander behavior proposed by Craig Reynolds
         float speed = this.transform.forward.magnitude;
     	
