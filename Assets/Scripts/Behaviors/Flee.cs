@@ -4,15 +4,16 @@ using System.Collections;
 /**
  * Move away from an enemy pursuer.
  */
-public class Flee : Wander {
+public class Flee : BaseBehavior {
     public float stopRadius = 15f;
 	public GameObject target;
+    public BaseBehavior idleBehavior;
 
     public override Vector3 ComputeVelocity() {
-        // If far enough from target, switch to wander
+        // If far enough from target, switch to idle behavior
         float distance = Vector3.Distance(target.transform.position, this.transform.position);
         if (distance > stopRadius) {
-            return base.ComputeVelocity();
+            return idleBehavior.ComputeVelocity();
         }
 
         float scale = 1f;

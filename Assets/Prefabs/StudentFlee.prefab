@@ -555,6 +555,7 @@ GameObject:
   - 114: {fileID: 11445192}
   - 114: {fileID: 11441162}
   - 114: {fileID: 11459576}
+  - 114: {fileID: 11412822}
   m_Layer: 0
   m_Name: StudentFlee
   m_TagString: Untagged
@@ -2300,7 +2301,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132068}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2391,6 +2392,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11412822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
 --- !u!114 &11441162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2437,6 +2450,7 @@ MonoBehaviour:
   scale: .5
   stopRadius: 15
   target: {fileID: 0}
+  idleBehavior: {fileID: 11412822}
 --- !u!136 &13672396
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2613,6 +2627,14 @@ Prefab:
       propertyPath: stopRadius
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scale
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: idleBehavior
+      value: 
+      objectReference: {fileID: 11412822}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146504}
