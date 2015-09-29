@@ -22,11 +22,7 @@ public class ReachGoal : BaseBehavior {
             scale *= Mathf.Max(0.25f, (distance - stopRadius) / (10 * stopRadius));
         }
 
-    	Vector3 rot = target.transform.rotation.eulerAngles;
-        Quaternion qrot = Quaternion.Euler(rot.x, rot.y, rot.z);
-        Vector3 aim = qrot * Vector3.zero;
-    	Vector3 v = (target.transform.position + aim - this.transform.position) * scale;
-        return v;
+    	return (target.transform.position - this.transform.position) * scale;
     }
 
 }
