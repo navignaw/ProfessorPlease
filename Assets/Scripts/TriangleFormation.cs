@@ -16,16 +16,11 @@ public class TriangleFormation : MonoBehaviour {
                 row = -row;
             }
             Vector3 normCoord = new Vector3(row, 0.0f, -col);
-            formation[i].GetComponent<SquareFormationFollow>().pos = 
+            formation[i].GetComponent<FormationFollow>().pos = 
                 separation * normCoord;
             row++;
-            formation[i].GetComponent<SquareFormationFollow>().leader = this.gameObject;
+            formation[i].GetComponent<FormationFollow>().leader = this.gameObject;
         }
-    }
-    
-    // Update is called once per frame
-    public void Update () {
-        //nothing to update?
     }
 
 }

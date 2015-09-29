@@ -15,26 +15,21 @@ public class SquareFormation : MonoBehaviour {
         int leaderside = ((side - 1) / 2);
         for (i = 0; i < formation.Length; i++) {
             if (i < leaderside) {
-                formation[i].GetComponent<SquareFormationFollow>().pos = 
+                formation[i].GetComponent<FormationFollow>().pos = 
                     new Vector3(-separation*(i+1), 0.0f, 0.0f);
-                Debug.Log(formation[i].GetComponent<SquareFormationFollow>().pos);
+                Debug.Log(formation[i].GetComponent<FormationFollow>().pos);
             } else if (i < side - 1) {
-                formation[i].GetComponent<SquareFormationFollow>().pos = 
+                formation[i].GetComponent<FormationFollow>().pos = 
                     new Vector3(separation*(i-leaderside+1), 0.0f, 0.0f);
             }
             else {
                 int row = ((i - side + 1) % side) - leaderside;
                 int col = Mathf.FloorToInt((i + 1) / side);
-                formation[i].GetComponent<SquareFormationFollow>().pos = 
+                formation[i].GetComponent<FormationFollow>().pos = 
                     new Vector3(separation*row, 0.0f, -separation*col);
             }
-            formation[i].GetComponent<SquareFormationFollow>().leader = this.gameObject;
+            formation[i].GetComponent<FormationFollow>().leader = this.gameObject;
         }
-    }
-    
-    // Update is called once per frame
-    public void Update () {
-        //nothing to update?
     }
 
 }

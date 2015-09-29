@@ -12,15 +12,10 @@ public class CircleFormation : MonoBehaviour {
         for (i = 0; i < formation.Length; i++) {
             float angle = 2 * Mathf.PI * (i+1) / total;
             Vector3 normCoord = new Vector3(Mathf.Sin(angle), 0.0f, Mathf.Cos(angle) - 1.0f);
-            formation[i].GetComponent<SquareFormationFollow>().pos = 
+            formation[i].GetComponent<FormationFollow>().pos = 
                 radius * normCoord;
-            formation[i].GetComponent<SquareFormationFollow>().leader = this.gameObject;
+            formation[i].GetComponent<FormationFollow>().leader = this.gameObject;
         }
-    }
-    
-    // Update is called once per frame
-    public void Update () {
-        //nothing to update?
     }
 
 }
