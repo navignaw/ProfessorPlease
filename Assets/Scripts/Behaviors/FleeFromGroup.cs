@@ -21,16 +21,16 @@ public class FleeFromGroup : BaseBehavior {
             float scale = 1f;
 
             // If approaching radius, start slowing down
-            if (distance > 0.5f * stopRadius) {
-                scale *= Mathf.Max(0.25f, (stopRadius - distance) / (0.5f * stopRadius));
+            if (distance > 0.75f * stopRadius) {
+                scale *= Mathf.Max(0.25f, (stopRadius - distance) / (0.25f * stopRadius));
             }
 
-            newVelocity += (this.transform.position - target.transform.position) * scale;
+            newVelocity += (this.transform.position - target.transform.position).normalized * scale;
         }
 
         // If far enough from all targets, switch to idle behavior
         if (newVelocity == Vector3.zero) {
-            return idleBehavior.ComputeVelocity();
+            return idleBehavior.ComputeVelocity() * (idleBehavior.scale / base.scale);
         }
 
         // Otherwise, move in combined direction

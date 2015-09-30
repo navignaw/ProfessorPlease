@@ -20,6 +20,9 @@ public class Movement : MonoBehaviour {
     void Update () {
         Vector3 newVelocity = Vector3.zero;
         foreach (BaseBehavior behavior in behaviors) {
+            if (behavior.scale == 0) {
+                continue;
+            }
             newVelocity += behavior.ComputeVelocity() * behavior.scale;
         }
 

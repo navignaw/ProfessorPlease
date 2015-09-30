@@ -6,7 +6,13 @@ using System.Collections;
  */
 public class ReachGoal : BaseBehavior {
     public float stopRadius = 3f;
+    public bool lookAhead = true;
 	public GameObject target;
+    private Rigidbody _targetRigidbody;
+
+    private void Start() {
+        _targetRigidbody = target.GetComponent<Rigidbody>();
+    }
 
     public override Vector3 ComputeVelocity() {
         // If close enough to target, stop moving
@@ -16,13 +22,19 @@ public class ReachGoal : BaseBehavior {
         }
 
         float scale = 1f;
+        Vector3 targetPos = target.transform.position;
 
-        // If approaching 10 * radius, start slowing down
-        if (distance <= 10 * stopRadius) {
-            scale *= Mathf.Max(0.25f, (distance - stopRadius) / (10 * stopRadius));
+        // If approaching 2 * radius, start slowing down
+        if (distance <= 2 * stopRadius) {
+            scale *= Mathf.Max(0.25f, (distance - stopRadius) / (2 * stopRadius));
         }
 
-    	return (target.transform.position - this.transform.position) * scale;
+        // If distant and lookAhead, dynamically pursue a bit ahead of the target
+        else if (lookAhead) {
+            targetPos += _targetRigidbody.velocity;
+        }
+
+    	return (targetPos - this.transform.position).normalized * scale;
     }
 
 }

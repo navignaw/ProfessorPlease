@@ -167,6 +167,7 @@ Transform:
   - {fileID: 223576579}
   - {fileID: 211494224}
   - {fileID: 1700101033}
+  - {fileID: 544065392}
   - {fileID: 961783895}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -413,6 +414,10 @@ Transform:
   - {fileID: 1924068117}
   m_Father: {fileID: 1537889012}
   m_RootOrder: 0
+--- !u!1 &294805946 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 174864, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+  m_PrefabInternal: {fileID: 544065391}
 --- !u!1001 &295776883
 Prefab:
   m_ObjectHideFlags: 0
@@ -695,6 +700,76 @@ Transform:
   - {fileID: 1857885786}
   m_Father: {fileID: 618327548}
   m_RootOrder: 2
+--- !u!1001 &544065391
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 114224575}
+    m_Modifications:
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 438710, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .532675147
+      objectReference: {fileID: 0}
+    - target: {fileID: 438710, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .0703404471
+      objectReference: {fileID: 0}
+    - target: {fileID: 438710, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .836132646
+      objectReference: {fileID: 0}
+    - target: {fileID: 438710, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.110415131
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418140, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 961783894}
+    - target: {fileID: 11418140, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+      propertyPath: scale
+      value: .75
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &544065392 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 454136, guid: df0d470fd0d0dca4f97be469c6a050df, type: 2}
+  m_PrefabInternal: {fileID: 544065391}
 --- !u!1 &546973251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,7 +1417,7 @@ Transform:
   - {fileID: 1078393935}
   - {fileID: 1139494425}
   m_Father: {fileID: 114224575}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &961783896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,13 +1447,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7a2eeeca6de6745829e7796b19041a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: .5
+  scale: 1
   stopRadius: 15
   targets:
   - {fileID: 295776884}
   - {fileID: 223576580}
   - {fileID: 211494225}
   - {fileID: 1700101034}
+  - {fileID: 294805946}
   idleBehavior: {fileID: 961783896}
 --- !u!114 &961783898
 MonoBehaviour:

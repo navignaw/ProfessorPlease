@@ -1598,7 +1598,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144682}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2421,8 +2421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249be80057d64c440ad6d0b9b04fc16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: .5
+  scale: 1
   stopRadius: 3
+  lookAhead: 1
   target: {fileID: 0}
 --- !u!114 &11434518
 MonoBehaviour:
@@ -2611,7 +2612,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: scale
-      value: .5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: behaviors.Array.data[0]
