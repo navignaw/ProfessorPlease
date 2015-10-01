@@ -4,106 +4,35 @@ using System.Collections;
 /**
  * Random wander behavior. TODO: Jun implement this
  */
-public class Wander : BaseBehavior {
-    public float circleRadius = 6f;
-    public float wanderStrength = 10f;
-    public float wanderAngle = 0.0f; // change to current direction
-    public float angleChange = 1f; // change in angle per frame
-
-    public float collisionStrength = 3f;
-    public float collisionDangerRadius = 10f;
-
-    private Vector3 wander() {
-        float newAngleChange = (Random.value-0.5f)*angleChange;
-
-        wanderAngle += newAngleChange;
-        // based on wander behavior proposed by Craig Reynolds
-
-        // get circle in front of model (velocity vector)
-        Vector3 circleCenter = this.transform.forward;
-        circleCenter.Normalize();
-        circleCenter = circleCenter*circleRadius;
-
-
-        // make new force vector for random wander
-        Vector3 displacement = new Vector3(0,0,0);
-        displacement.x = Mathf.Cos(wanderAngle);
-        displacement.z = Mathf.Sin(wanderAngle);
-        displacement.Normalize();
-        //displacement = displacement;
-
-        
-
-        Vector3 wanderForce = new Vector3();
-
-
-        Vector3 forward = this.transform.forward;
-
-        RaycastHit hit = new RaycastHit();
-
-        //wanderAngle += newAngleChange;
-        wanderForce = circleCenter+displacement;
-
-        wanderForce.Normalize();
-
-        return wanderForce;
-    }
-
-
-    public Vector3 collision() {
-        //object[] obj = GameObject.FindGameObjectsWithTag("Wall");
-
-        Vector3 avoidForce = new Vector3(0,0,0); //this.transform.forward;
-
-        Vector3 forward = this.transform.forward;
-
-        RaycastHit hit = new RaycastHit();
-
-        float maxDist = collisionDangerRadius;
-
-        if (Physics.Raycast(this.transform.position,forward,out hit,15)) {
-            if (hit.collider.tag=="Wall") {
-                Vector3 normal = hit.normal;
-                normal.Normalize();
-                Vector3 parallel = forward - normal*Vector3.Dot(normal,forward);
-                parallel.Normalize();
-                float dist = hit.distance;
-                avoidForce = Vector3.Reflect(forward,normal); //(parallel)+(4f)*normal;
-
-
-            }
-        }
-
-        avoidForce.Normalize();
-        //print avoidForce;
-
-        print (avoidForce);
-        return avoidForce; //collisionStrength*avoidForce;
-    }
-
+public class Broken : BaseBehavior {
+    public float dist;
 
     public override Vector3 ComputeVelocity() {
-        float speed = this.transform.forward.magnitude;
 
-        // apply force
-        Vector3 wanderForce = wander();
-        Vector3 collisionForce = collision();
+        Quaternion qRot = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+        Quaternion fRot = Quaternion.Euler(0.0f, 10.0f, 0.0f);
+        Quaternion fRot2 = Quaternion.Euler(0.0f, -10.0f, 0.0f);
+        Vector3 collisionForce = new Vector3(0.0f, 0.0f, 0.0f);
+        RaycastHit hit = new RaycastHit();
+        Vector3 forward1 = this.transform.forward;
+        Vector3 forward2 = fRot * forward1;
+        Vector3 forward3 = fRot * forward2;
+        Vector3 forward4 = fRot2 * forward1;
+        Vector3 forward5 = fRot2 * forward4;
+        Vector3 newpos = this.transform.position;
+        newpos.y += 0.8f;
 
-        Vector3 forward = this.transform.forward;
-        forward.Normalize();
-
-        Vector3 total = forward + wanderForce;
-        total.Normalize();
-
-        Vector3 new_forward = wanderForce;
-
-        new_forward.Normalize();
-
-        if (collisionForce.magnitude>0.1) {
-            return collisionForce;
+        if (Physics.Raycast(newpos,forward1,out hit,dist) ||
+            Physics.Raycast(newpos,forward2,out hit,dist) ||
+            Physics.Raycast(newpos,forward3,out hit,dist) ||
+            Physics.Raycast(newpos,forward4,out hit,dist) ||
+            Physics.Raycast(newpos,forward5,out hit,dist)) {
+            if (hit.collider.tag=="Wall") {
+                collisionForce = qRot * forward1;
+            }
         }
-
-        return speed*new_forward;
+        
+        return collisionForce;
     }
 
 }
