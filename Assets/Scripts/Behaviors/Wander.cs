@@ -5,8 +5,8 @@ using System.Collections;
  * Random wander behavior. TODO: Jun implement this
  */
 public class Wander : BaseBehavior {
-	public float circleRadius = 10.0f;
-    public float wanderStrength = 0.4f;
+	public float circleRadius = 6f;
+    public float wanderStrength = 10f;
 	public float wanderAngle = 0.0f; // change to current direction
 	public float angleChange = 1f; // change in angle per frame
 
@@ -24,7 +24,6 @@ public class Wander : BaseBehavior {
         displacement.x = Mathf.Cos(wanderAngle);
         displacement.z = Mathf.Sin(wanderAngle);
         displacement.Normalize();
-        displacement = displacement*wanderStrength;
 
         wanderAngle += (Random.value-0.5f)*angleChange;
 
@@ -42,7 +41,7 @@ public class Wander : BaseBehavior {
         Vector3 forward = this.transform.forward;
         forward.Normalize();
 
-        Vector3 total = forward + wanderForce;
+        Vector3 total = wanderForce;
         total.Normalize();
 
     	return speed*total;
