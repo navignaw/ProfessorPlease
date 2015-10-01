@@ -6,5 +6,6 @@ using System.Collections;
  */
 public abstract class BaseBehavior : MonoBehaviour {
     public float scale = 0;
+    public bool vital = false;
     public abstract Vector3 ComputeVelocity();
 }
