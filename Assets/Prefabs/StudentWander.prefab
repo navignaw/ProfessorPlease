@@ -179,8 +179,6 @@ GameObject:
   - 136: {fileID: 13654204}
   - 114: {fileID: 11450346}
   - 114: {fileID: 11402594}
-  - 114: {fileID: 11472820}
-  - 114: {fileID: 11407922}
   - 114: {fileID: 11498682}
   - 114: {fileID: 11406422}
   m_Layer: 0
@@ -2421,21 +2419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: .5
   vital: 1
-  dist: 6
---- !u!114 &11407922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e549c6f016f0946a66bc9621199683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale: .5
-  vital: 0
-  dist: 10
+  dist: 5
 --- !u!114 &11450346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2455,23 +2439,6 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: .200000003
---- !u!114 &11472820
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale: .5
-  vital: 0
-  circleRadius: 6
-  wanderStrength: 10
-  wanderAngle: 0
-  angleChange: 1
 --- !u!114 &11498682
 MonoBehaviour:
   m_ObjectHideFlags: 1
