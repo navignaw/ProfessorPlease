@@ -20,6 +20,7 @@ public class FormationFollow : BaseBehavior {
         Vector3 aheadPos = pos + aimahead;
         Vector3 aim = qRot * aheadPos;
         Vector3 v = leader.transform.position + aim - this.transform.position;
+        if (v.magnitude > 1f) return v.normalized;
         return v;
     }
 

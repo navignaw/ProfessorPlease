@@ -2419,7 +2419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
-  dist: 15
+  vital: 1
+  dist: 4
 --- !u!114 &11450346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2450,8 +2451,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4d7bbc9249d4e418ddf645dbecbd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
-  innerradius: 0
+  radius: 4
+  minradius: 1
   formation:
   - {fileID: 0}
   - {fileID: 0}
@@ -2472,6 +2473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
+  vital: 0
   circleRadius: 10
   wanderStrength: .400000006
   wanderAngle: 0
