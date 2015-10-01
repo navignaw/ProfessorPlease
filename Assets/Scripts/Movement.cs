@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityStandardAssets.Characters.ThirdPerson;
 using System.Collections;
 
@@ -28,7 +28,6 @@ public class Movement : MonoBehaviour {
             Vector3 velocity = behavior.ComputeVelocity();
 
             if (behavior.vital) {
-                //Debug.Log(velocity);
                 vitalVelocity += velocity * behavior.scale;
             } else {
                 normalVelocity += velocity * behavior.scale;
@@ -36,7 +35,6 @@ public class Movement : MonoBehaviour {
         }
 
         if (vitalVelocity.magnitude < 0.1f) {
-            Debug.Log(vitalVelocity);
             vitalVelocity += normalVelocity;
         }
         character.Move(vitalVelocity, false, false);
