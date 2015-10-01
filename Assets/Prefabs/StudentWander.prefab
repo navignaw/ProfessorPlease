@@ -181,6 +181,8 @@ GameObject:
   - 114: {fileID: 11402594}
   - 114: {fileID: 11472820}
   - 114: {fileID: 11407922}
+  - 114: {fileID: 11498682}
+  - 114: {fileID: 11406422}
   m_Layer: 0
   m_Name: StudentWander
   m_TagString: Untagged
@@ -1780,7 +1782,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113348}
   m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 434400}
@@ -2404,8 +2406,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviors:
-  - {fileID: 11407922}
-  - {fileID: 11472820}
+  - {fileID: 11406422}
+  - {fileID: 11498682}
+--- !u!114 &11406422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e549c6f016f0946a66bc9621199683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
+  vital: 1
+  dist: 6
 --- !u!114 &11407922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2418,6 +2434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
+  vital: 0
   dist: 10
 --- !u!114 &11450346
 MonoBehaviour:
@@ -2450,6 +2467,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
+  vital: 0
+  circleRadius: 6
+  wanderStrength: 10
+  wanderAngle: 0
+  angleChange: 1
+--- !u!114 &11498682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
+  vital: 0
   circleRadius: 6
   wanderStrength: 10
   wanderAngle: 0

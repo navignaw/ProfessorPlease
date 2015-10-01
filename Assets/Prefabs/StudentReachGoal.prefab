@@ -976,6 +976,7 @@ GameObject:
   - 114: {fileID: 11404036}
   - 114: {fileID: 11434518}
   - 114: {fileID: 11418140}
+  - 114: {fileID: 11463400}
   m_Layer: 0
   m_Name: StudentReachGoal
   m_TagString: Untagged
@@ -1598,7 +1599,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144682}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1743,7 +1744,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.7809601, y: 2.29999995, z: 0}
+  m_LocalPosition: {x: 23.180378, y: -0, z: 3.23388791}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 420408}
@@ -2421,7 +2422,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249be80057d64c440ad6d0b9b04fc16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 1
+  scale: .5
+  vital: 0
   stopRadius: 3
   lookAhead: 1
   target: {fileID: 0}
@@ -2438,6 +2440,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviors:
   - {fileID: 11418140}
+  - {fileID: 0}
+--- !u!114 &11463400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e549c6f016f0946a66bc9621199683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
+  vital: 1
+  dist: 6
 --- !u!136 &13686058
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -18,15 +18,28 @@ public class Movement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Vector3 newVelocity = Vector3.zero;
+        Vector3 normalVelocity = Vector3.zero;
+        Vector3 vitalVelocity = Vector3.zero;
+
         foreach (BaseBehavior behavior in behaviors) {
             if (behavior.scale == 0) {
                 continue;
             }
-            newVelocity += behavior.ComputeVelocity() * behavior.scale;
+            Vector3 velocity = behavior.ComputeVelocity();
+
+            if (behavior.vital) {
+                //Debug.Log(velocity);
+                vitalVelocity += velocity * behavior.scale;
+            } else {
+                normalVelocity += velocity * behavior.scale;
+            }
         }
 
-        character.Move(newVelocity, false, false);
+        if (vitalVelocity.magnitude < 0.1f) {
+            Debug.Log(vitalVelocity);
+            vitalVelocity += normalVelocity;
+        }
+        character.Move(vitalVelocity, false, false);
     }
 
 }
