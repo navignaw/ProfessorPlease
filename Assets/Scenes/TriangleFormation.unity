@@ -438,31 +438,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 454696, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .532675147
+      value: .532675207
       objectReference: {fileID: 0}
     - target: {fileID: 454696, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0703404471
+      value: .0703404546
       objectReference: {fileID: 0}
     - target: {fileID: 454696, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .836132646
+      value: .836132765
       objectReference: {fileID: 0}
     - target: {fileID: 454696, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.110415131
+      value: -.110415146
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
       propertyPath: m_Name
       value: StudentTriangleFormationFollower (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 436670, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
+    - target: {fileID: 11479386, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
+      propertyPath: scale
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a68e3abc12ac1649ac6775c4f079dfe, type: 2}
