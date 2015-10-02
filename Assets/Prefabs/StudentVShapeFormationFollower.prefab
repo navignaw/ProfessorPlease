@@ -180,9 +180,10 @@ GameObject:
   - 114: {fileID: 11450346}
   - 114: {fileID: 11402594}
   - 114: {fileID: 11479386}
+  - 114: {fileID: 11411618}
   m_Layer: 0
   m_Name: StudentVShapeFormationFollower
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2404,6 +2405,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviors:
   - {fileID: 11479386}
+  - {fileID: 11411618}
+--- !u!114 &11411618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e549c6f016f0946a66bc9621199683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
+  vital: 1
+  dist: 1
 --- !u!114 &11450346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2435,6 +2451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
+  vital: 0
   pos: {x: 5, y: 0, z: 0}
   leader: {fileID: 0}
 --- !u!136 &13654204

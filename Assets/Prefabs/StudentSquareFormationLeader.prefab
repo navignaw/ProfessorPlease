@@ -180,10 +180,11 @@ GameObject:
   - 114: {fileID: 11450346}
   - 114: {fileID: 11402594}
   - 114: {fileID: 11490724}
-  - 114: {fileID: 11419726}
+  - 114: {fileID: 11426698}
+  - 114: {fileID: 11460626}
   m_Layer: 0
   m_Name: StudentSquareFormationLeader
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1779,8 +1780,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113348}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: .70710659, z: 0, w: -.707106948}
+  m_LocalPosition: {x: 18, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 434400}
@@ -1982,7 +1983,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119590}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2405,7 +2406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviors:
   - {fileID: 11490724}
---- !u!114 &11419726
+  - {fileID: 11460626}
+--- !u!114 &11426698
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2416,9 +2418,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3127ab50166e4db4c961966436d289a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  separation: 0
+  separation: 4
   model: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
-  formation: []
+  formation:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11450346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2438,6 +2448,20 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: .200000003
+--- !u!114 &11460626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e549c6f016f0946a66bc9621199683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
+  vital: 1
+  dist: 6
 --- !u!114 &11490724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2449,7 +2473,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: .5
+  scale: .400000006
+  vital: 0
+  circleRadius: 6
+  wanderStrength: 10
+  wanderAngle: 0
+  angleChange: 1
 --- !u!136 &13654204
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -180,9 +180,10 @@ GameObject:
   - 114: {fileID: 11450346}
   - 114: {fileID: 11402594}
   - 114: {fileID: 11479386}
+  - 114: {fileID: 11458842}
   m_Layer: 0
   m_Name: StudentSquareFormationFollower
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1778,8 +1779,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113348}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: .70710659, z: 0, w: -.707106948}
+  m_LocalPosition: {x: 22, y: 0, z: 6}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 434400}
@@ -2404,6 +2405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviors:
   - {fileID: 11479386}
+  - {fileID: 11458842}
 --- !u!114 &11450346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2423,6 +2425,20 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: .200000003
+--- !u!114 &11458842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e549c6f016f0946a66bc9621199683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
+  vital: 1
+  dist: 1
 --- !u!114 &11479386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2435,8 +2451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
-  pos: {x: 5, y: 0, z: 0}
-  leader: {fileID: 113348, guid: 4a34158ded2c82d43a4e7f14edb19835, type: 2}
+  vital: 0
+  pos: {x: 3, y: 0, z: -3}
+  leader: {fileID: 0}
 --- !u!136 &13654204
 CapsuleCollider:
   m_ObjectHideFlags: 1

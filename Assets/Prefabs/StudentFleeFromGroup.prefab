@@ -556,6 +556,7 @@ GameObject:
   - 114: {fileID: 11499740}
   - 114: {fileID: 11437098}
   - 114: {fileID: 11407734}
+  - 114: {fileID: 11445934}
   m_Layer: 0
   m_Name: StudentFleeFromGroup
   m_TagString: Untagged
@@ -1393,7 +1394,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101600}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1729,7 +1730,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.6810818, y: 15.6409483, z: 19.1162033}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 456406}
@@ -2404,6 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: .5
+  vital: 0
   circleRadius: 10
   wanderStrength: .400000006
   wanderAngle: 0
@@ -2439,9 +2441,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1
+  vital: 0
   stopRadius: 15
-  targets: []
+  targets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   idleBehavior: {fileID: 11407734}
+--- !u!114 &11445934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e549c6f016f0946a66bc9621199683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 0
+  vital: 0
+  dist: 0
 --- !u!114 &11499740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2455,6 +2477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviors:
   - {fileID: 11437098}
+  - {fileID: 11445934}
 --- !u!136 &13606682
 CapsuleCollider:
   m_ObjectHideFlags: 1
