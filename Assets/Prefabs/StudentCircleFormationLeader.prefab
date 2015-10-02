@@ -2451,7 +2451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: .5
+  scale: .400000006
   vital: 0
   circleRadius: 6
   wanderStrength: 10
@@ -2468,7 +2468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02af389b85e28de4583053e1808a344c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 7
   formation:
   - {fileID: 0}
   - {fileID: 0}

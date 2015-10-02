@@ -689,14 +689,6 @@ Prefab:
       propertyPath: formation.Array.data[7]
       value: 
       objectReference: {fileID: 949826846}
-    - target: {fileID: 11490724, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
-      propertyPath: wanderStrength
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 11490724, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
-      propertyPath: scale
-      value: .400000006
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c57b2efad6d11c545b41de1a3b70f799, type: 2}
   m_IsPrefabParent: 0
@@ -785,23 +777,27 @@ Prefab:
       objectReference: {fileID: 181193274}
     - target: {fileID: 454696, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .532675207
+      value: .532675147
       objectReference: {fileID: 0}
     - target: {fileID: 454696, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0703404546
+      value: .0703404471
       objectReference: {fileID: 0}
     - target: {fileID: 454696, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .836132765
+      value: .836132646
       objectReference: {fileID: 0}
     - target: {fileID: 454696, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.110415146
+      value: -.110415131
       objectReference: {fileID: 0}
     - target: {fileID: 113348, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
       propertyPath: m_Name
       value: StudentCircleFormationFollower (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11458842, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}
+      propertyPath: dist
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a183f4eba88909244a0f1b97b06f8f52, type: 2}

@@ -172,6 +172,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 295776884}
+    - target: {fileID: 11436118, guid: dca0f13552f2d004cae96b0a535ca4dc, type: 2}
+      propertyPath: scale
+      value: .75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dca0f13552f2d004cae96b0a535ca4dc, type: 2}
   m_IsPrefabParent: 0

@@ -284,6 +284,10 @@ Prefab:
       propertyPath: m_Name
       value: StudentFlockingWanderFollower (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 11408554, guid: 565e65299a2a2f1428d1701f02865eb6, type: 2}
+      propertyPath: dist
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 565e65299a2a2f1428d1701f02865eb6, type: 2}
   m_IsPrefabParent: 0
