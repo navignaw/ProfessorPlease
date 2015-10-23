@@ -76,7 +76,7 @@ public class Graph : MonoBehaviour {
         } else if (posx > dist * (xgrid - 1)) {
             retx = xgrid - 1;
         } else {
-            int lowerx = Mathf.FloorToInt((posx - startx) / dist);
+            int lowerx = Mathf.FloorToInt(posx / dist);
             if (Mathf.Abs(posx - lowerx * dist) > Mathf.Abs((lowerx + 1) * dist - posx)) {
                 retx = lowerx;
             } else {
@@ -88,7 +88,7 @@ public class Graph : MonoBehaviour {
         } else if (posz > dist * (zgrid - 1)) {
             retz = zgrid - 1;
         } else {
-            int lowerz = Mathf.FloorToInt((posz - startz) / dist);
+            int lowerz = Mathf.FloorToInt(posz / dist);
             if (Mathf.Abs(posz - lowerz * dist) > Mathf.Abs((lowerz + 1) * dist - posz)) {
                 retz = lowerz;
             } else {
@@ -97,6 +97,7 @@ public class Graph : MonoBehaviour {
         }
 
         return new Vector2(retx, retz);
+    }
 
     public Vector3 WorldPosition(Vector2 pos, float y) {
         Vector3 result = new Vector3(startx + pos.x * dist, y, startz + pos.y * dist);
