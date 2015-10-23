@@ -65,13 +65,8 @@ public class Graph : MonoBehaviour {
             }
         }
     }
-    
-    // Update is called once per frame
-    void Update () {
-    
-    }
 
-    Vector2 NearestNode(Vector3 pos) {
+    public Vector2 NearestNode(Vector3 pos) {
         float posx = pos.x - startx;
         float posz = pos.z - startz;
         int retx;
@@ -102,9 +97,8 @@ public class Graph : MonoBehaviour {
         }
 
         return new Vector2(retx, retz);
-    }
 
-    Vector3 WorldPosition(Vector2 pos, float y) {
+    public Vector3 WorldPosition(Vector2 pos, float y) {
         Vector3 result = new Vector3(startx + pos.x * dist, y, startz + pos.y * dist);
         return result;
     }

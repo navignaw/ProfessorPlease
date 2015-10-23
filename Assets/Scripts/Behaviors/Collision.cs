@@ -3,10 +3,11 @@ using System.Collections;
 
 /**
  * Collision detection. Fire rays in a cone (field of vision) and
- * check for collisions with GameObjects tagged "Wall"
+ * check for collisions with GameObjects tagged with collisionTag
  */
 public class Collision : BaseBehavior {
     public float dist;
+    public string collisionTag = "Wall";
     private int lastChanged = 0;
 
     public override Vector3 ComputeVelocity() {
@@ -30,7 +31,7 @@ public class Collision : BaseBehavior {
             Physics.Raycast(newpos, forward3, out hit, dist) ||
             Physics.Raycast(newpos, forward4, out hit, dist) ||
             Physics.Raycast(newpos, forward5, out hit, dist)) {
-            if (hit.collider.tag == "Wall") {
+            if (hit.collider.tag == collisionTag) {
                 collisionForce = qRot * forward1;
                 lastChanged = 50;
             }
