@@ -34,7 +34,7 @@ public class Graph : MonoBehaviour {
         for (i = 0; i < xgrid; i++) {
             neighbors[i] = new Vector2[zgrid][];
             for (j = 0; j < zgrid; j++) {
-                Debug.Log(new Vector2(i,j));
+                //Debug.Log(new Vector2(i,j));
                 int count = 0;
                 Vector2[] temp = new Vector2[4];
                 Vector3 currpos = new Vector3(startx + i*dist, yheight, startz + j*dist);
@@ -56,10 +56,10 @@ public class Graph : MonoBehaviour {
                 }
                 int k;
                 neighbors[i][j] = new Vector2[count];
-                Debug.Log(count);
+                //Debug.Log(count);
                 for (k = 0; k < count; k++) {
                     neighbors[i][j][k] = temp[k];
-                    Debug.Log(WorldPosition(temp[k], 0.0f));
+                    //Debug.Log(WorldPosition(temp[k], 0.0f));
                 }
 
             }
@@ -72,7 +72,36 @@ public class Graph : MonoBehaviour {
     }
 
     Vector2 NearestNode(Vector3 pos) {
-        return Vector2.zero;
+        float posx = pos.x - startx;
+        float posz = pos.z - startz;
+        int retx;
+        int retz;
+        if (posx < 0f) {
+            retx = 0;
+        } else if (posx > dist * (xgrid - 1)) {
+            retx = xgrid - 1;
+        } else {
+            int lowerx = Mathf.FloorToInt((posx - startx) / dist);
+            if (Mathf.Abs(posx - lowerx * dist) > Mathf.Abs((lowerx + 1) * dist - posx)) {
+                retx = lowerx;
+            } else {
+                retx = lowerx + 1;
+            }
+        }
+        if (posz < 0f) {
+            retz = 0;
+        } else if (posz > dist * (zgrid - 1)) {
+            retz = zgrid - 1;
+        } else {
+            int lowerz = Mathf.FloorToInt((posz - startz) / dist);
+            if (Mathf.Abs(posz - lowerz * dist) > Mathf.Abs((lowerz + 1) * dist - posz)) {
+                retz = lowerz;
+            } else {
+                retz = lowerz + 1;
+            }
+        }
+
+        return new Vector2(retx, retz);
     }
 
     Vector3 WorldPosition(Vector2 pos, float y) {
