@@ -65,17 +65,12 @@ public class Graph : MonoBehaviour {
             }
         }
     }
-    
-    // Update is called once per frame
-    void Update () {
-    
-    }
 
-    Vector2 NearestNode(Vector3 pos) {
+    public Vector2 NearestNode(Vector3 pos) {
         return Vector2.zero;
     }
 
-    Vector3 WorldPosition(Vector2 pos, float y) {
+    public Vector3 WorldPosition(Vector2 pos, float y) {
         Vector3 result = new Vector3(startx + pos.x * dist, y, startz + pos.y * dist);
         return result;
     }
