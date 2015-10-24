@@ -28,38 +28,35 @@ public class Graph : MonoBehaviour {
         Vector3 down = new Vector3(0.0f,0.0f,-1.0f);
         Vector3 left = new Vector3(-1.0f,0.0f,0.0f);
         Vector3 right = new Vector3(1.0f,0.0f,0.0f);
-        neighbors = new Vector2[xgrid][][];
+        neighbors = new Vector2[xgrid + 1][][];
         startx = Mathf.Min(startpos.x, endpos.x);
         startz = Mathf.Min(startpos.z, endpos.z);
-        for (i = 0; i < xgrid; i++) {
-            neighbors[i] = new Vector2[zgrid][];
-            for (j = 0; j < zgrid; j++) {
-                //Debug.Log(new Vector2(i,j));
+        for (i = 0; i <= xgrid; i++) {
+            neighbors[i] = new Vector2[zgrid + 1][];
+            for (j = 0; j <= zgrid; j++) {
                 int count = 0;
                 Vector2[] temp = new Vector2[4];
                 Vector3 currpos = new Vector3(startx + i*dist, yheight, startz + j*dist);
-                if (j < zgrid - 1 && Physics.Raycast(currpos, up, out hit, dist * 1.5f)) {
+                if (j <= zgrid && !(Physics.Raycast(currpos, up, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
                     temp[count] = new Vector2(i,j+1);
                     count++;
                 }
-                if (j > 0 && Physics.Raycast(currpos, down, out hit, dist * 1.5f) && hit.collider.tag == "Wall") {
+                if (j > 0 && !(Physics.Raycast(currpos, down, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
                     temp[count] = new Vector2(i,j-1);
                     count++;
                 }
-                if (i > 0 && Physics.Raycast(currpos, left, out hit, dist * 1.5f) && hit.collider.tag == "Wall") {
+                if (i > 0 && !(Physics.Raycast(currpos, left, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
                     temp[count] = new Vector2(i-1,j);
                     count++;
                 }
-                if (i < xgrid - 1 && Physics.Raycast(currpos, right, out hit, dist * 1.5f) && hit.collider.tag == "Wall") {
+                if (i <= xgrid && !(Physics.Raycast(currpos, right, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
                     temp[count] = new Vector2(i+1,j);
                     count++;
                 }
                 int k;
                 neighbors[i][j] = new Vector2[count];
-                //Debug.Log(count);
                 for (k = 0; k < count; k++) {
-                    neighbors[i][j][k] = temp[k];
-                    //Debug.Log(WorldPosition(temp[k], 0.0f));
+                    neighbors[i][j][k] = new Vector2(temp[k].x, temp[k].y);
                 }
 
             }
@@ -77,7 +74,7 @@ public class Graph : MonoBehaviour {
             retx = xgrid - 1;
         } else {
             int lowerx = Mathf.FloorToInt(posx / dist);
-            if (Mathf.Abs(posx - lowerx * dist) > Mathf.Abs((lowerx + 1) * dist - posx)) {
+            if (Mathf.Abs(posx - lowerx * dist) < Mathf.Abs((lowerx + 1) * dist - posx)) {
                 retx = lowerx;
             } else {
                 retx = lowerx + 1;
@@ -89,7 +86,7 @@ public class Graph : MonoBehaviour {
             retz = zgrid - 1;
         } else {
             int lowerz = Mathf.FloorToInt(posz / dist);
-            if (Mathf.Abs(posz - lowerz * dist) > Mathf.Abs((lowerz + 1) * dist - posz)) {
+            if (Mathf.Abs(posz - lowerz * dist) < Mathf.Abs((lowerz + 1) * dist - posz)) {
                 retz = lowerz;
             } else {
                 retz = lowerz + 1;
@@ -112,5 +109,7 @@ public class Graph : MonoBehaviour {
                     Gizmos.DrawSphere(WorldPosition(new Vector2(i,j), 2f), 0.2f);
             }
         }
+
+
     }
 }
