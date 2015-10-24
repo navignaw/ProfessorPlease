@@ -24,10 +24,6 @@ public class Graph : MonoBehaviour {
         xgrid = Mathf.CeilToInt(width / dist);
         zgrid = Mathf.CeilToInt(height / dist);
         int i, j;
-        Vector3 up = new Vector3(0.0f,0.0f,1.0f);
-        Vector3 down = new Vector3(0.0f,0.0f,-1.0f);
-        Vector3 left = new Vector3(-1.0f,0.0f,0.0f);
-        Vector3 right = new Vector3(1.0f,0.0f,0.0f);
         neighbors = new Vector2[xgrid + 1][][];
         startx = Mathf.Min(startpos.x, endpos.x);
         startz = Mathf.Min(startpos.z, endpos.z);
@@ -37,20 +33,20 @@ public class Graph : MonoBehaviour {
                 int count = 0;
                 Vector2[] temp = new Vector2[4];
                 Vector3 currpos = new Vector3(startx + i*dist, yheight, startz + j*dist);
-                if (j <= zgrid && !(Physics.Raycast(currpos, up, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
-                    temp[count] = new Vector2(i,j+1);
+                if (j <= zgrid && !(Physics.Raycast(currpos, Vector3.forward, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
+                    temp[count] = new Vector2(i, j+1);
                     count++;
                 }
-                if (j > 0 && !(Physics.Raycast(currpos, down, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
-                    temp[count] = new Vector2(i,j-1);
+                if (j > 0 && !(Physics.Raycast(currpos, Vector3.back, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
+                    temp[count] = new Vector2(i, j-1);
                     count++;
                 }
-                if (i > 0 && !(Physics.Raycast(currpos, left, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
-                    temp[count] = new Vector2(i-1,j);
+                if (i > 0 && !(Physics.Raycast(currpos, Vector3.left, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
+                    temp[count] = new Vector2(i-1, j);
                     count++;
                 }
-                if (i <= xgrid && !(Physics.Raycast(currpos, right, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
-                    temp[count] = new Vector2(i+1,j);
+                if (i <= xgrid && !(Physics.Raycast(currpos, Vector3.right, out hit, dist * 1.0f) && hit.collider.tag == "Wall")) {
+                    temp[count] = new Vector2(i+1 ,j);
                     count++;
                 }
                 int k;
@@ -106,7 +102,7 @@ public class Graph : MonoBehaviour {
         Gizmos.color = Color.yellow;
         for (i = 0; i < xgrid; i++) {
             for (j = 0; j < zgrid; j++) {
-                    Gizmos.DrawSphere(WorldPosition(new Vector2(i,j), 2f), 0.2f);
+                Gizmos.DrawSphere(WorldPosition(new Vector2(i,j), 2f), 0.2f);
             }
         }
 

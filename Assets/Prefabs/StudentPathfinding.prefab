@@ -1599,7 +1599,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144682}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2425,8 +2425,9 @@ MonoBehaviour:
   scale: .5
   vital: 0
   stopRadius: 3
-  lookAhead: 1
+  waitTime: 1
   target: {fileID: 0}
+  graph: {fileID: 0}
 --- !u!114 &11434518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2455,6 +2456,7 @@ MonoBehaviour:
   scale: .5
   vital: 1
   dist: 3
+  collisionTag: Wall
 --- !u!136 &13686058
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2655,6 +2657,10 @@ Prefab:
       propertyPath: behaviors.Array.data[1]
       value: 
       objectReference: {fileID: 11469226}
+    - target: {fileID: 0}
+      propertyPath: waitTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174864}

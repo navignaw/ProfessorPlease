@@ -8,7 +8,7 @@ using PriorityQueue;
  */
 public class Pathfinding : BaseBehavior {
     public float stopRadius = 3f;
-    public float waitTime = 10f; // how long to wait between each A* call
+    public float waitTime = 1f; // how long to wait between each A* call
 	public GameObject target;
     public Graph graph;
 
@@ -26,7 +26,6 @@ public class Pathfinding : BaseBehavior {
 
     // Run A* and update the path of nodes we want to travel
     private void ComputePath(Vector3 startPos, Vector3 targetPos) {
-        Debug.Log("computing path");
         Vector2 startNode = graph.NearestNode(startPos);
         Vector2 targetNode = graph.NearestNode(targetPos);
 
@@ -35,11 +34,11 @@ public class Pathfinding : BaseBehavior {
         frontier.Enqueue(0f, startNode);
 
         // initialize map of parents (in-edge neighbor to each vertex) for path reconstruction
-        Vector2[,] parents = new Vector2[graph.xgrid, graph.zgrid];
+        Vector2[,] parents = new Vector2[graph.xgrid + 1, graph.zgrid + 1];
         parents[(int)startNode.x, (int)startNode.y] = startNode;
 
         // initialize costs
-        float[,] costs = new float[graph.xgrid, graph.zgrid];
+        float[,] costs = new float[graph.xgrid + 1, graph.zgrid + 1];
         for (int i = 0; i < graph.xgrid; i++) {
             for (int j = 0; j < graph.zgrid; j++) {
                 if (i == startNode.x && j == startNode.y) {
@@ -112,10 +111,10 @@ public class Pathfinding : BaseBehavior {
         // Move towards next node along path
         while (path.Count > 0) {
             // if we're close enough to the path node, just look for the next one
-            if (Vector3.Distance(path[0], this.transform.position) < 0.5f) {
+            if (Vector3.Distance(path[0], this.transform.position) < 1f) {
                 path.RemoveAt(0);
             } else {
-                return path[0] - this.transform.position;
+                return Vector3.Normalize(path[0] - this.transform.position);
             }
         }
 
