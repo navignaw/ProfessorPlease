@@ -20,28 +20,28 @@ public class Pathfinding : BaseBehavior {
     }
 
     // Heuristic function for A*. Use Euclidean distance for now
-    private float HeuristicValue(Vector2 node, Vector2 targetNode) {
+    private float HeuristicValue(Node2D node, Node2D targetNode) {
         return Vector3.Distance(graph.WorldPosition(node, 0f), graph.WorldPosition(targetNode, 0f));
     }
 
     // Run A* and update the path of nodes we want to travel
     private void ComputePath(Vector3 startPos, Vector3 targetPos) {
-        Vector2 startNode = graph.NearestNode(startPos);
-        Vector2 targetNode = graph.NearestNode(targetPos);
+        Node2D startNode = graph.NearestNode(startPos);
+        Node2D targetNode = graph.NearestNode(targetPos);
 
-        HashSet<Vector2> visited = new HashSet<Vector2>();
-        PriorityQueue<float, Vector2> frontier = new PriorityQueue<float, Vector2>();
+        HashSet<Node2D> visited = new HashSet<Node2D>();
+        PriorityQueue<float, Node2D> frontier = new PriorityQueue<float, Node2D>();
         frontier.Enqueue(0f, startNode);
 
         // initialize map of parents (in-edge neighbor to each vertex) for path reconstruction
-        Vector2[,] parents = new Vector2[graph.xgrid + 1, graph.zgrid + 1];
-        parents[(int)startNode.x, (int)startNode.y] = startNode;
+        Node2D[,] parents = new Node2D[graph.xgrid + 1, graph.zgrid + 1];
+        parents[startNode.x, startNode.z] = startNode;
 
         // initialize costs
         float[,] costs = new float[graph.xgrid + 1, graph.zgrid + 1];
         for (int i = 0; i < graph.xgrid; i++) {
             for (int j = 0; j < graph.zgrid; j++) {
-                if (i == startNode.x && j == startNode.y) {
+                if (i == startNode.x && j == startNode.z) {
                     costs[i, j] = 0f;
                 } else {
                     costs[i, j] = -1f;
@@ -50,7 +50,7 @@ public class Pathfinding : BaseBehavior {
         }
 
         bool foundPath = false;
-        Vector2 current;
+        Node2D current;
         while (!frontier.IsEmpty) {
             current = frontier.DequeueValue();
             if (current == targetNode) {
@@ -59,18 +59,18 @@ public class Pathfinding : BaseBehavior {
             }
             visited.Add(current);
 
-            Vector2[] neighbors = graph.neighbors[(int)current.x][(int)current.y];
+            Node2D[] neighbors = graph.neighbors[current.x][current.z];
             for (int i = 0; i < neighbors.Length; i++) {
                 if (visited.Contains(neighbors[i])) {
                     continue;
                 }
 
-                float cost = costs[(int)current.x, (int)current.y] + graph.dist;
+                float cost = costs[current.x, current.z] + graph.dist;
                 // If we found a better cost/distance, add to frontier
                 // TODO: use new Tuple data type instead of these hacky int casts
-                if (costs[(int)neighbors[i].x, (int)neighbors[i].y] < 0f || cost < costs[(int)neighbors[i].x, (int)neighbors[i].y]) {
-                    costs[(int)neighbors[i].x, (int)neighbors[i].y] = cost;
-                    parents[(int)neighbors[i].x, (int)neighbors[i].y] = current;
+                if (costs[neighbors[i].x, neighbors[i].z] < 0f || cost < costs[neighbors[i].x, neighbors[i].z]) {
+                    costs[neighbors[i].x, neighbors[i].z] = cost;
+                    parents[neighbors[i].x, neighbors[i].z] = current;
                     float heuristic = HeuristicValue(neighbors[i], targetNode);
                     frontier.Enqueue(cost + heuristic, neighbors[i]);
                 }
@@ -87,7 +87,7 @@ public class Pathfinding : BaseBehavior {
         current = targetNode;
         path.Add(graph.WorldPosition(current, this.transform.position.y));
         while (current != startNode) {
-            current = parents[(int)current.x, (int)current.y];
+            current = parents[current.x, current.z];
             path.Add(graph.WorldPosition(current, this.transform.position.y));
         }
         path.Reverse();
