@@ -45,7 +45,7 @@ public class Graph : MonoBehaviour {
     private bool[][][] valid;
 
     private bool is_valid(int i, int j, int k) {
-        return !(i < 0 || j < 0 || k < 0 || i > xgrid || j > ygrid || k > zgrid || !valid[i][j][k]);
+        return i >= 0 && j >= 0 && k >= 0 && i <= xgrid && j <= ygrid && k <= zgrid && valid[i][j][k];
     }
 
     // Use this for initialization
@@ -151,9 +151,9 @@ public class Graph : MonoBehaviour {
 
     public Node3D NearestNode(Vector3 pos) {
         float posx = pos.x - startx;
+        float posy = pos.y - starty;
         float posz = pos.z - startz;
-        int retx;
-        int retz;
+        int retx, rety, retz;
         if (posx < 0f) {
             retx = 0;
         } else if (posx > dist * (xgrid - 1)) {
@@ -164,6 +164,18 @@ public class Graph : MonoBehaviour {
                 retx = lowerx;
             } else {
                 retx = lowerx + 1;
+            }
+        }
+        if (posy < 0f) {
+            rety = 0;
+        } else if (posy > dist * (ygrid - 1)) {
+            rety = ygrid - 1;
+        } else {
+            int lowery = Mathf.FloorToInt(posy / dist);
+            if (Mathf.Abs(posy - lowery * dist) < Mathf.Abs((lowery + 1) * dist - posy)) {
+                rety = lowery;
+            } else {
+                rety = lowery + 1;
             }
         }
         if (posz < 0f) {
@@ -179,10 +191,10 @@ public class Graph : MonoBehaviour {
             }
         }
 
-        return new Node3D(retx, 1, retz);
+        return new Node3D(retx, rety, retz);
     }
 
-    public Vector3 WorldPosition(Node3D pos, float y) {
+    public Vector3 WorldPosition(Node3D pos) {
         Vector3 result = new Vector3(startx + pos.x * dist, starty + pos.y * dist, startz + pos.z * dist);
         return result;
     }

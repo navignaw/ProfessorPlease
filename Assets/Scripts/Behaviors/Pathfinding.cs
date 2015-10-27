@@ -21,7 +21,7 @@ public class Pathfinding : BaseBehavior {
 
     // Heuristic function for A*. Use Euclidean distance for now
     private float HeuristicValue(Node3D node, Node3D targetNode) {
-        return Vector3.Distance(graph.WorldPosition(node, 0f), graph.WorldPosition(targetNode, 0f));
+        return Vector3.Distance(graph.WorldPosition(node), graph.WorldPosition(targetNode));
     }
 
     // Run A* and update the path of nodes we want to travel
@@ -34,17 +34,19 @@ public class Pathfinding : BaseBehavior {
         frontier.Enqueue(0f, startNode);
 
         // initialize map of parents (in-edge neighbor to each vertex) for path reconstruction
-        Node3D[,] parents = new Node3D[graph.xgrid + 1, graph.zgrid + 1];
-        parents[startNode.x, startNode.z] = startNode;
+        Node3D[,,] parents = new Node3D[graph.xgrid + 1, graph.ygrid + 1, graph.zgrid + 1];
+        parents[startNode.x, startNode.y, startNode.z] = startNode;
 
         // initialize costs
-        float[,] costs = new float[graph.xgrid + 1, graph.zgrid + 1];
+        float[,,] costs = new float[graph.xgrid + 1, graph.ygrid + 1, graph.zgrid + 1];
         for (int i = 0; i < graph.xgrid; i++) {
-            for (int j = 0; j < graph.zgrid; j++) {
-                if (i == startNode.x && j == startNode.z) {
-                    costs[i, j] = 0f;
-                } else {
-                    costs[i, j] = -1f;
+            for (int j = 0; j < graph.ygrid; j++) {
+                for (int k = 0; k < graph.zgrid; k++) {
+                    if (i == startNode.x && j == startNode.y && k == startNode.z) {
+                        costs[i, j, k] = 0f;
+                    } else {
+                        costs[i, j, k] = -1f;
+                    }
                 }
             }
         }
@@ -65,12 +67,11 @@ public class Pathfinding : BaseBehavior {
                     continue;
                 }
 
-                float cost = costs[current.x, current.z] + graph.dist;
+                float cost = costs[current.x, current.y, current.z] + graph.dist;
                 // If we found a better cost/distance, add to frontier
-                // TODO: use new Tuple data type instead of these hacky int casts
-                if (costs[neighbors[i].x, neighbors[i].z] < 0f || cost < costs[neighbors[i].x, neighbors[i].z]) {
-                    costs[neighbors[i].x, neighbors[i].z] = cost;
-                    parents[neighbors[i].x, neighbors[i].z] = current;
+                if (costs[neighbors[i].x, neighbors[i].y, neighbors[i].z] < 0f || cost < costs[neighbors[i].x, neighbors[i].y, neighbors[i].z]) {
+                    costs[neighbors[i].x, neighbors[i].y, neighbors[i].z] = cost;
+                    parents[neighbors[i].x, neighbors[i].y, neighbors[i].z] = current;
                     float heuristic = HeuristicValue(neighbors[i], targetNode);
                     frontier.Enqueue(cost + heuristic, neighbors[i]);
                 }
@@ -85,10 +86,10 @@ public class Pathfinding : BaseBehavior {
         // Reconstruct path using parents
         path.Clear();
         current = targetNode;
-        path.Add(graph.WorldPosition(current, this.transform.position.y));
+        path.Add(graph.WorldPosition(current));
         while (current != startNode) {
-            current = parents[current.x, current.z];
-            path.Add(graph.WorldPosition(current, this.transform.position.y));
+            current = parents[current.x, current.y, current.z];
+            path.Add(graph.WorldPosition(current));
         }
         path.Reverse();
     }
@@ -109,19 +110,28 @@ public class Pathfinding : BaseBehavior {
         }
 
         // Move towards next node along path
-        while (path.Count > 0) {
+        Vector3 result = Vector3.zero;
+        int pathIndex = 0;
+        for (; pathIndex < path.Count; pathIndex++) {
             // if we're close enough to the path node, just look for the next one
-            if ((path[0] - this.transform.position).sqrMagnitude < 1f) {
-                path.RemoveAt(0);
+            if ((path[pathIndex] - this.transform.position).sqrMagnitude < 1f) {
+                continue;
             // if the first path node is behind us, get rid of it
-            } else if (path.Count >= 2 && IsBehind(path[0]) && !IsBehind(path[1])) {
-                path.RemoveAt(0);
-            } else {
-                return Vector3.Normalize(path[0] - this.transform.position);
+            } else if (pathIndex == 0 && path.Count >= 2 && IsBehind(path[0]) && !IsBehind(path[1])) {
+                continue;
             }
+
+            // Take vector towards position and project onto xz plane, since character cannot actually move up
+            result = path[pathIndex] - this.transform.position;
+            result = Vector3.Normalize(result - Vector3.Project(result, Vector3.up));
+            break;
         }
 
-        return Vector3.zero;
+        if (pathIndex > 0) {
+            path.RemoveRange(0, pathIndex);
+        }
+
+        return result;
     }
 
     // Is the position behind me?
