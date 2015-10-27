@@ -1085,11 +1085,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dist: 3
-  startpos: {x: -45, y: 4, z: -45}
-  endpos: {x: 45, y: 4, z: 45}
+  startpos: {x: -50, y: 1, z: -50}
+  endpos: {x: 50, y: 20, z: 50}
   xgrid: 0
+  ygrid: 0
   zgrid: 0
-  yheight: 0
 --- !u!1001 &2063975768
 Prefab:
   m_ObjectHideFlags: 0

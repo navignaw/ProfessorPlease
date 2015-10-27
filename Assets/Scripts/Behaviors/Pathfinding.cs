@@ -20,21 +20,21 @@ public class Pathfinding : BaseBehavior {
     }
 
     // Heuristic function for A*. Use Euclidean distance for now
-    private float HeuristicValue(Node2D node, Node2D targetNode) {
+    private float HeuristicValue(Node3D node, Node3D targetNode) {
         return Vector3.Distance(graph.WorldPosition(node, 0f), graph.WorldPosition(targetNode, 0f));
     }
 
     // Run A* and update the path of nodes we want to travel
     private void ComputePath(Vector3 startPos, Vector3 targetPos) {
-        Node2D startNode = graph.NearestNode(startPos);
-        Node2D targetNode = graph.NearestNode(targetPos);
+        Node3D startNode = graph.NearestNode(startPos);
+        Node3D targetNode = graph.NearestNode(targetPos);
 
-        HashSet<Node2D> visited = new HashSet<Node2D>();
-        PriorityQueue<float, Node2D> frontier = new PriorityQueue<float, Node2D>();
+        HashSet<Node3D> visited = new HashSet<Node3D>();
+        PriorityQueue<float, Node3D> frontier = new PriorityQueue<float, Node3D>();
         frontier.Enqueue(0f, startNode);
 
         // initialize map of parents (in-edge neighbor to each vertex) for path reconstruction
-        Node2D[,] parents = new Node2D[graph.xgrid + 1, graph.zgrid + 1];
+        Node3D[,] parents = new Node3D[graph.xgrid + 1, graph.zgrid + 1];
         parents[startNode.x, startNode.z] = startNode;
 
         // initialize costs
@@ -50,7 +50,7 @@ public class Pathfinding : BaseBehavior {
         }
 
         bool foundPath = false;
-        Node2D current;
+        Node3D current;
         while (!frontier.IsEmpty) {
             current = frontier.DequeueValue();
             if (current == targetNode) {
@@ -59,7 +59,7 @@ public class Pathfinding : BaseBehavior {
             }
             visited.Add(current);
 
-            Node2D[] neighbors = graph.neighbors[current.x][current.z];
+            Node3D[] neighbors = graph.neighbors[current.x][current.y][current.z];
             for (int i = 0; i < neighbors.Length; i++) {
                 if (visited.Contains(neighbors[i])) {
                     continue;

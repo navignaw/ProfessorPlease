@@ -2,24 +2,25 @@
 using System;
 using System.Collections;
 
-public struct Node2D {
-    public int x, z;
+public struct Node3D {
+    public int x, y, z;
 
-    public Node2D(int x, int z) {
+    public Node3D(int x, int y, int z) {
         this.x = x;
+        this.y = y;
         this.z = z;
     }
 
     public override bool Equals(System.Object obj) {
-        return obj is Node2D && this == (Node2D)obj;
+        return obj is Node3D && this == (Node3D)obj;
     }
     public override int GetHashCode() {
-        return x.GetHashCode() ^ z.GetHashCode();
+        return x.GetHashCode() ^ y.GetHashCode() ^ z.GetHashCode();
     }
-    public static bool operator ==(Node2D u, Node2D v) {
-        return u.x == v.x && u.z == v.z;
+    public static bool operator ==(Node3D u, Node3D v) {
+        return u.x == v.x && u.y == v.y && u.z == v.z;
     }
-    public static bool operator !=(Node2D u, Node2D v) {
+    public static bool operator !=(Node3D u, Node3D v) {
         return !(u == v);
     }
 }
@@ -31,60 +32,124 @@ public class Graph : MonoBehaviour {
     public float dist;
     public Vector3 startpos;
     public Vector3 endpos;
-    // neighbors [row (x-indexed)][col (z-indexed)][index into neighbor list]
-    public Node2D[][][] neighbors;
+    // neighbors [row (x-indexed)][height (y-indexed)][col (z-indexed)][index into neighbor list]
+    public Node3D[][][][] neighbors;
     public int xgrid;
+    public int ygrid;
     public int zgrid;
-    public float yheight;
 
     private float startx;
+    private float starty;
     private float startz;
     private string collisionTag = "Wall";
+    private bool[][][] valid;
+
+    private bool is_valid(int i, int j, int k) {
+        return !(i < 0 || j < 0 || k < 0 || i > xgrid || j > ygrid || k > zgrid || !valid[i][j][k]);
+    }
 
     // Use this for initialization
     void Start () {
         RaycastHit hit = new RaycastHit();
         float width = Mathf.Abs(endpos.x - startpos.x);
+        float depth = Mathf.Abs(endpos.y - startpos.y);
         float height = Mathf.Abs(endpos.z - startpos.z);
         xgrid = Mathf.CeilToInt(width / dist);
+        ygrid = Mathf.CeilToInt(depth / dist);
         zgrid = Mathf.CeilToInt(height / dist);
-        int i, j;
-        neighbors = new Node2D[xgrid + 1][][];
         startx = Mathf.Min(startpos.x, endpos.x);
+        starty = Mathf.Min(startpos.y, endpos.y);
         startz = Mathf.Min(startpos.z, endpos.z);
+        int i, j, k;
+        valid = new bool[xgrid+1][][];
         for (i = 0; i <= xgrid; i++) {
-            neighbors[i] = new Node2D[zgrid + 1][];
-            for (j = 0; j <= zgrid; j++) {
-                int count = 0;
-                Node2D[] temp = new Node2D[4];
-                Vector3 currpos = new Vector3(startx + i*dist, yheight, startz + j*dist);
-                if (j <= zgrid && !(Physics.Raycast(currpos, Vector3.forward, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
-                    temp[count] = new Node2D(i, j+1);
-                    count++;
+            valid[i] = new bool[ygrid + 1][];
+            for (j = 0; j <= ygrid; j++) {
+                valid[i][j] = new bool[zgrid + 1];
+                for (k = 0; k <= zgrid; k++) {
+                    Vector3 currpos = new Vector3(startx + i*dist, starty + j*dist, startz + k*dist);
+                    if (Physics.Raycast(currpos, Vector3.down, out hit, dist * 1.0f) && hit.collider.tag == collisionTag) {
+                        valid[i][j][k] = true;
+                    } else {
+                        valid[i][j][k] = false;
+                    }
                 }
-                if (j > 0 && !(Physics.Raycast(currpos, Vector3.back, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
-                    temp[count] = new Node2D(i, j-1);
-                    count++;
-                }
-                if (i > 0 && !(Physics.Raycast(currpos, Vector3.left, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
-                    temp[count] = new Node2D(i-1, j);
-                    count++;
-                }
-                if (i <= xgrid && !(Physics.Raycast(currpos, Vector3.right, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
-                    temp[count] = new Node2D(i+1, j);
-                    count++;
-                }
-                int k;
-                neighbors[i][j] = new Node2D[count];
-                for (k = 0; k < count; k++) {
-                    neighbors[i][j][k] = new Node2D(temp[k].x, temp[k].z);
+            }
+        }
+        neighbors = new Node3D[xgrid + 1][][][];
+        for (i = 0; i <= xgrid; i++) {
+            neighbors[i] = new Node3D[ygrid + 1][][];
+            for (j = 0; j <= ygrid; j++) {
+                neighbors[i][j] = new Node3D[zgrid + 1][];
+                Node3D[] temp = new Node3D[12];
+                float sqrt2 = Mathf.Sqrt(2f);
+                for (k = 0; k <= zgrid; k++) {
+                    if (!is_valid(i, j, k)) {
+                        neighbors[i][j][k] = new Node3D[0];
+                        continue;
+                    }
+                    int count = 0;
+                    Vector3 currpos = new Vector3(startx + i*dist, starty + j*dist, startz + k*dist);
+                    if (is_valid(i, j, k+1) && !(Physics.Raycast(currpos, Vector3.forward, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i, j, k+1);
+                        count++;
+                    }
+                    if (is_valid(i, j, k-1) && !(Physics.Raycast(currpos, Vector3.back, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i, j, k-1);
+                        count++;
+                    }
+                    if (is_valid(i-1, j, k) && !(Physics.Raycast(currpos, Vector3.left, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i-1, j, k);
+                        count++;
+                    }
+                    if (is_valid(i+1, j, k) && !(Physics.Raycast(currpos, Vector3.right, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i+1, j, k);
+                        count++;
+                    }
+                    if (is_valid(i, j+1, k+1) && !(Physics.Raycast(currpos, Vector3.forward + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i, j+1, k+1);
+                        count++;
+                    }
+                    if (is_valid(i, j+1, k-1) && !(Physics.Raycast(currpos, Vector3.back + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i, j+1, k-1);
+                        count++;
+                    }
+                    if (is_valid(i+1, j+1, k) && !(Physics.Raycast(currpos, Vector3.right + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i+1, j+1, k);
+                        count++;
+                    }
+                    if (is_valid(i-1, j+1, k) && !(Physics.Raycast(currpos, Vector3.left + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i-1, j+1, k);
+                        count++;
+                    }
+                    if (is_valid(i, j-1, k+1) && !(Physics.Raycast(currpos, Vector3.forward + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i, j-1, k+1);
+                        count++;
+                    }
+                    if (is_valid(i, j-1, k-1) && !(Physics.Raycast(currpos, Vector3.back + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i, j-1, k-1);
+                        count++;
+                    }
+                    if (is_valid(i+1, j-1, k) && !(Physics.Raycast(currpos, Vector3.right + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i+1, j-1, k);
+                        count++;
+                    }
+                    if (is_valid(i-1, j-1, k) && !(Physics.Raycast(currpos, Vector3.left + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                        temp[count] = new Node3D(i-1, j-1, k);
+                        count++;
+                    }
+                    int l;
+                    neighbors[i][j][k] = new Node3D[count];
+                    for (l = 0; l < count; l++) {
+                        neighbors[i][j][k][l] = new Node3D(temp[l].x, temp[l].y, temp[l].z);
+                    }
                 }
 
             }
         }
     }
 
-    public Node2D NearestNode(Vector3 pos) {
+    public Node3D NearestNode(Vector3 pos) {
         float posx = pos.x - startx;
         float posz = pos.z - startz;
         int retx;
@@ -114,19 +179,28 @@ public class Graph : MonoBehaviour {
             }
         }
 
-        return new Node2D(retx, retz);
+        return new Node3D(retx, 1, retz);
     }
 
-    public Vector3 WorldPosition(Node2D pos, float y) {
-        Vector3 result = new Vector3(startx + pos.x * dist, y, startz + pos.z * dist);
+    public Vector3 WorldPosition(Node3D pos, float y) {
+        Vector3 result = new Vector3(startx + pos.x * dist, starty + pos.y * dist, startz + pos.z * dist);
         return result;
     }
 
     void OnDrawGizmos() {
         Gizmos.color = Color.yellow;
         for (int i = 0; i < xgrid; i++) {
-            for (int j = 0; j < zgrid; j++) {
-                Gizmos.DrawSphere(WorldPosition(new Node2D(i, j), 2f), 0.2f);
+            for (int j = 0; j < ygrid; j++) {
+                for (int k = 0; k < zgrid; k++) {
+                    if (valid[i][j][k]) {
+                        Gizmos.DrawSphere(new Vector3(startx + i * dist, starty + j * dist, startz + k * dist), 0.2f);
+                    }
+                    /*
+                    for (int l = 0; l < neighbors[i][j][k].Length; l++) {
+                        Gizmos.DrawLine(WorldPosition(new Node3D(i,j,k), 0f), WorldPosition(neighbors[i][j][k][l], 0f));
+                    }
+                    */
+                }
             }
         }
 
