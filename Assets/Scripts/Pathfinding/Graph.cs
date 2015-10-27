@@ -31,6 +31,7 @@ public struct Node3D {
 public class Graph : MonoBehaviour {
     public float dist;
     public float vdist;
+    public float checkwidth;
     public Vector3 startpos;
     public Vector3 endpos;
     // neighbors [row (x-indexed)][height (y-indexed)][col (z-indexed)][index into neighbor list]
@@ -70,7 +71,13 @@ public class Graph : MonoBehaviour {
                 for (k = 0; k <= zgrid; k++) {
                     Vector3 currpos = new Vector3(startx + i*dist, starty + j*vdist, startz + k*dist);
                     if (Physics.Raycast(currpos, Vector3.down, out hit, vdist * 1.0f) && hit.collider.tag == collisionTag) {
-                        valid[i][j][k] = true;
+                        float toGround = hit.distance;
+                        if (Physics.Raycast(currpos + checkwidth * Vector3.right, Vector3.down, out hit, toGround + checkwidth + 0.001f) && hit.collider.tag == collisionTag
+                            && Physics.Raycast(currpos + checkwidth * Vector3.left, Vector3.down, out hit, toGround + checkwidth + 0.001f) && hit.collider.tag == collisionTag
+                            && Physics.Raycast(currpos + checkwidth * Vector3.forward, Vector3.down, out hit, toGround + checkwidth + 0.001f) && hit.collider.tag == collisionTag
+                            && Physics.Raycast(currpos + checkwidth * Vector3.back, Vector3.down, out hit, toGround + checkwidth + 0.001f) && hit.collider.tag == collisionTag) {
+                            valid[i][j][k] = true;
+                        }                        
                     } else {
                         valid[i][j][k] = false;
                     }
@@ -203,16 +210,23 @@ public class Graph : MonoBehaviour {
     void OnDrawGizmos() {
         Gizmos.color = Color.yellow;
         for (int i = 0; i < xgrid; i++) {
-            for (int j = 0; j < ygrid; j++) {
+            for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < zgrid; k++) {
                     if (valid[i][j][k]) {
+                                Gizmos.color = Color.yellow;
+
                         Gizmos.DrawSphere(new Vector3(startx + i * dist, starty + j * vdist, startz + k * dist), 0.2f);
+                    } else {
+                                Gizmos.color = Color.red;
+                        Gizmos.DrawSphere(new Vector3(startx + i * dist, starty + j * vdist, startz + k * dist), 0.2f);
+
+
                     }
                     /*
                     for (int l = 0; l < neighbors[i][j][k].Length; l++) {
                         Gizmos.DrawLine(WorldPosition(new Node3D(i,j,k)), WorldPosition(neighbors[i][j][k][l]));
-                    }
-                    */
+                    }*/
+                    
                 }
             }
         }
