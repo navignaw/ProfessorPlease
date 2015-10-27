@@ -111,7 +111,10 @@ public class Pathfinding : BaseBehavior {
         // Move towards next node along path
         while (path.Count > 0) {
             // if we're close enough to the path node, just look for the next one
-            if (Vector3.Distance(path[0], this.transform.position) < 1f) {
+            if ((path[0] - this.transform.position).sqrMagnitude < 1f) {
+                path.RemoveAt(0);
+            // if the first path node is behind us, get rid of it
+            } else if (path.Count >= 2 && IsBehind(path[0]) && !IsBehind(path[1])) {
                 path.RemoveAt(0);
             } else {
                 return Vector3.Normalize(path[0] - this.transform.position);
@@ -119,6 +122,12 @@ public class Pathfinding : BaseBehavior {
         }
 
         return Vector3.zero;
+    }
+
+    // Is the position behind me?
+    private bool IsBehind(Vector3 pos) {
+        float angle = Mathf.Abs(Vector3.Angle(this.transform.forward, transform.position - pos));
+        return (angle < 90 || angle > 270);
     }
 
     void OnDrawGizmos() {
