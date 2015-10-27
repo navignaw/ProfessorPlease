@@ -30,6 +30,7 @@ public struct Node3D {
  */
 public class Graph : MonoBehaviour {
     public float dist;
+    public float vdist;
     public Vector3 startpos;
     public Vector3 endpos;
     // neighbors [row (x-indexed)][height (y-indexed)][col (z-indexed)][index into neighbor list]
@@ -55,7 +56,7 @@ public class Graph : MonoBehaviour {
         float depth = Mathf.Abs(endpos.y - startpos.y);
         float height = Mathf.Abs(endpos.z - startpos.z);
         xgrid = Mathf.CeilToInt(width / dist);
-        ygrid = Mathf.CeilToInt(depth / dist);
+        ygrid = Mathf.CeilToInt(depth / vdist);
         zgrid = Mathf.CeilToInt(height / dist);
         startx = Mathf.Min(startpos.x, endpos.x);
         starty = Mathf.Min(startpos.y, endpos.y);
@@ -67,8 +68,8 @@ public class Graph : MonoBehaviour {
             for (j = 0; j <= ygrid; j++) {
                 valid[i][j] = new bool[zgrid + 1];
                 for (k = 0; k <= zgrid; k++) {
-                    Vector3 currpos = new Vector3(startx + i*dist, starty + j*dist, startz + k*dist);
-                    if (Physics.Raycast(currpos, Vector3.down, out hit, dist * 1.0f) && hit.collider.tag == collisionTag) {
+                    Vector3 currpos = new Vector3(startx + i*dist, starty + j*vdist, startz + k*dist);
+                    if (Physics.Raycast(currpos, Vector3.down, out hit, vdist * 1.0f) && hit.collider.tag == collisionTag) {
                         valid[i][j][k] = true;
                     } else {
                         valid[i][j][k] = false;
@@ -82,14 +83,14 @@ public class Graph : MonoBehaviour {
             for (j = 0; j <= ygrid; j++) {
                 neighbors[i][j] = new Node3D[zgrid + 1][];
                 Node3D[] temp = new Node3D[12];
-                float sqrt2 = Mathf.Sqrt(2f);
+                float ramplen = Mathf.Sqrt(Mathf.Pow(dist, 2f) + Mathf.Pow(vdist, 2f));
                 for (k = 0; k <= zgrid; k++) {
                     if (!is_valid(i, j, k)) {
                         neighbors[i][j][k] = new Node3D[0];
                         continue;
                     }
                     int count = 0;
-                    Vector3 currpos = new Vector3(startx + i*dist, starty + j*dist, startz + k*dist);
+                    Vector3 currpos = new Vector3(startx + i*dist, starty + j*vdist, startz + k*dist);
                     if (is_valid(i, j, k+1) && !(Physics.Raycast(currpos, Vector3.forward, out hit, dist * 1.0f) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i, j, k+1);
                         count++;
@@ -106,35 +107,35 @@ public class Graph : MonoBehaviour {
                         temp[count] = new Node3D(i+1, j, k);
                         count++;
                     }
-                    if (is_valid(i, j+1, k+1) && !(Physics.Raycast(currpos, Vector3.forward + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i, j+1, k+1) && !(Physics.Raycast(currpos, Vector3.forward + Vector3.up, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i, j+1, k+1);
                         count++;
                     }
-                    if (is_valid(i, j+1, k-1) && !(Physics.Raycast(currpos, Vector3.back + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i, j+1, k-1) && !(Physics.Raycast(currpos, Vector3.back + Vector3.up, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i, j+1, k-1);
                         count++;
                     }
-                    if (is_valid(i+1, j+1, k) && !(Physics.Raycast(currpos, Vector3.right + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i+1, j+1, k) && !(Physics.Raycast(currpos, Vector3.right + Vector3.up, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i+1, j+1, k);
                         count++;
                     }
-                    if (is_valid(i-1, j+1, k) && !(Physics.Raycast(currpos, Vector3.left + Vector3.up, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i-1, j+1, k) && !(Physics.Raycast(currpos, Vector3.left + Vector3.up, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i-1, j+1, k);
                         count++;
                     }
-                    if (is_valid(i, j-1, k+1) && !(Physics.Raycast(currpos, Vector3.forward + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i, j-1, k+1) && !(Physics.Raycast(currpos, Vector3.forward + Vector3.down, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i, j-1, k+1);
                         count++;
                     }
-                    if (is_valid(i, j-1, k-1) && !(Physics.Raycast(currpos, Vector3.back + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i, j-1, k-1) && !(Physics.Raycast(currpos, Vector3.back + Vector3.down, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i, j-1, k-1);
                         count++;
                     }
-                    if (is_valid(i+1, j-1, k) && !(Physics.Raycast(currpos, Vector3.right + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i+1, j-1, k) && !(Physics.Raycast(currpos, Vector3.right + Vector3.down, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i+1, j-1, k);
                         count++;
                     }
-                    if (is_valid(i-1, j-1, k) && !(Physics.Raycast(currpos, Vector3.left + Vector3.down, out hit, dist * sqrt2) && hit.collider.tag == collisionTag)) {
+                    if (is_valid(i-1, j-1, k) && !(Physics.Raycast(currpos, Vector3.left + Vector3.down, out hit, ramplen) && hit.collider.tag == collisionTag)) {
                         temp[count] = new Node3D(i-1, j-1, k);
                         count++;
                     }
@@ -168,11 +169,11 @@ public class Graph : MonoBehaviour {
         }
         if (posy < 0f) {
             rety = 0;
-        } else if (posy > dist * (ygrid - 1)) {
+        } else if (posy > vdist * (ygrid - 1)) {
             rety = ygrid - 1;
         } else {
-            int lowery = Mathf.FloorToInt(posy / dist);
-            if (Mathf.Abs(posy - lowery * dist) < Mathf.Abs((lowery + 1) * dist - posy)) {
+            int lowery = Mathf.FloorToInt(posy / vdist);
+            if (Mathf.Abs(posy - lowery * vdist) < Mathf.Abs((lowery + 1) * vdist - posy)) {
                 rety = lowery;
             } else {
                 rety = lowery + 1;
@@ -195,7 +196,7 @@ public class Graph : MonoBehaviour {
     }
 
     public Vector3 WorldPosition(Node3D pos) {
-        Vector3 result = new Vector3(startx + pos.x * dist, starty + pos.y * dist, startz + pos.z * dist);
+        Vector3 result = new Vector3(startx + pos.x * dist, starty + pos.y * vdist, startz + pos.z * dist);
         return result;
     }
 
@@ -205,11 +206,11 @@ public class Graph : MonoBehaviour {
             for (int j = 0; j < ygrid; j++) {
                 for (int k = 0; k < zgrid; k++) {
                     if (valid[i][j][k]) {
-                        Gizmos.DrawSphere(new Vector3(startx + i * dist, starty + j * dist, startz + k * dist), 0.2f);
+                        Gizmos.DrawSphere(new Vector3(startx + i * dist, starty + j * vdist, startz + k * dist), 0.2f);
                     }
                     /*
                     for (int l = 0; l < neighbors[i][j][k].Length; l++) {
-                        Gizmos.DrawLine(WorldPosition(new Node3D(i,j,k), 0f), WorldPosition(neighbors[i][j][k][l], 0f));
+                        Gizmos.DrawLine(WorldPosition(new Node3D(i,j,k)), WorldPosition(neighbors[i][j][k][l]));
                     }
                     */
                 }

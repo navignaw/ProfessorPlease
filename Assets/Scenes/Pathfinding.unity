@@ -1085,6 +1085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dist: 3
+  vdist: 1.54999995
   startpos: {x: -50, y: 1, z: -50}
   endpos: {x: 50, y: 20, z: 50}
   xgrid: 0
