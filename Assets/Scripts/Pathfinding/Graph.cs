@@ -223,7 +223,6 @@ public class Graph : MonoBehaviour {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < zgrid; k++) {
                     if (valid[i][j][k]) {
-<<<<<<< HEAD
                         Gizmos.color = Color.yellow;
                     } else {
                         Gizmos.color = Color.red;
@@ -233,15 +232,6 @@ public class Graph : MonoBehaviour {
                     /*for (int l = 0; l < neighbors[i][j][k].Length; l++) {
                         Gizmos.DrawLine(WorldPosition(new Node3D(i,j,k)), WorldPosition(neighbors[i][j][k][l]));
                     }*/
-=======
-                        Gizmos.DrawSphere(new Vector3(startx + i * dist, starty + j * vdist, startz + k * dist), 0.2f);
-                    }
-                    
-                    for (int l = 0; l < neighbors[i][j][k].Length; l++) {
-                        Gizmos.DrawLine(WorldPosition(new Node3D(i,j,k)), WorldPosition(neighbors[i][j][k][l]));
-                    }
-                    
->>>>>>> a9b3d4e0492129f39c23e7d02b007a792d8d1971
                 }
             }
         }
