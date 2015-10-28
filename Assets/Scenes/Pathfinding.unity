@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dist: 3
   vdist: 1.50999999
-  checkwidth: .200000003
+  checkwidth: .0299999993
   startpos: {x: -50, y: 1, z: -50}
   endpos: {x: 50, y: 20, z: 50}
   xgrid: 0
