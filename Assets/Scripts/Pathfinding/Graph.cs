@@ -39,11 +39,11 @@ public class Graph : MonoBehaviour {
     public int xgrid;
     public int ygrid;
     public int zgrid;
+    public string collisionTag = "Wall";
 
     private float startx;
     private float starty;
     private float startz;
-    private string collisionTag = "Wall";
     private bool[][][] valid;
 
     private bool is_valid(int i, int j, int k) {

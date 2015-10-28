@@ -84,14 +84,34 @@ public class Pathfinding : BaseBehavior {
         }
 
         // Reconstruct path using parents
-        path.Clear();
         current = targetNode;
-        path.Add(graph.WorldPosition(current));
+        List<Vector3> newPath = new List<Vector3>();
+        newPath.Add(graph.WorldPosition(current));
         while (current != startNode) {
             current = parents[current.x, current.y, current.z];
-            path.Add(graph.WorldPosition(current));
+            newPath.Add(graph.WorldPosition(current));
         }
-        path.Reverse();
+
+        // Smooth path by deleting unneeded nodes (going in reverse)
+        path.Clear();
+        int p0 = newPath.Count - 1;
+        int p1 = newPath.Count - 2;
+        path.Add(newPath[p0]);
+
+        RaycastHit hit = new RaycastHit();
+        while (p1 >= 0) {
+            float dist = Vector3.Distance(newPath[p0], newPath[p1]);
+            Vector3 dir = newPath[p1] - newPath[p0];
+            Vector3 normal = Vector3.Normalize(Vector3.Cross(dir, Vector3.up)) * 0.5f;
+            if (p1 == 0 || newPath[p0].y != newPath[p1].y || newPath[p0].y > 2f || newPath[p1].y > 2f || p0 - p1 > 3 ||
+               (Physics.Raycast(newPath[p0], dir, out hit, dist) && hit.collider.tag == graph.collisionTag) ||
+               (Physics.Raycast(newPath[p0] + normal, dir, out hit, dist) && hit.collider.tag == graph.collisionTag) ||
+               (Physics.Raycast(newPath[p0] - normal, dir, out hit, dist) && hit.collider.tag == graph.collisionTag)) {
+                path.Add(newPath[p1 + 1]);
+                p0 = p1;
+            }
+            p1--;
+        }
     }
 
     public override Vector3 ComputeVelocity() {
