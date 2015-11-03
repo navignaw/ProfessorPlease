@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Collide
+  - Canvas
   layers:
   - Default
   - TransparentFX
