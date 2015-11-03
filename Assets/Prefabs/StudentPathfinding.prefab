@@ -1601,7 +1601,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144682}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2421,7 +2421,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 174864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32a381eebebf50742a4cf855bc76edba, type: 3}
+  m_Script: {fileID: 11500000, guid: dfa7129e79358a14499940b757d87a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1
@@ -2667,7 +2667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: scale
-      value: .600000024
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: behaviors.Array.data[0]
@@ -2705,6 +2705,18 @@ Prefab:
       propertyPath: messagePrefab
       value: 
       objectReference: {fileID: 189014, guid: 8bd1ab480b9a4e84fb81e9315d09f023, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pathfind
+      value: 
+      objectReference: {fileID: 11418140}
+    - target: {fileID: 0}
+      propertyPath: behaviors.Array.data[2]
+      value: 
+      objectReference: {fileID: 11410806}
+    - target: {fileID: 0}
+      propertyPath: distance
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174864}

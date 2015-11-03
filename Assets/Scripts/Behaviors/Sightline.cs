@@ -15,6 +15,7 @@ public class Sightline : BaseBehavior {
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(this.transform.position, target.transform.position - this.transform.position, out hit, distance) && hit.collider.tag == "Player") {
             pathfind.scale = 0.6f;
+            this.scale = 0f;
         }
         return Vector3.zero;
     }
@@ -23,10 +24,6 @@ public class Sightline : BaseBehavior {
     private bool IsAhead(Vector3 pos) {
         float angle = Mathf.Abs(Vector3.Angle(this.transform.forward, transform.position - pos));
         return (angle > 90 || angle < 270);
-    }
-
-    void OnDrawGizmos() {
-
     }
 
 }
