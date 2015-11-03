@@ -7,7 +7,7 @@ using System.Collections;
 public class Question : MonoBehaviour {
     public GameObject messagePrefab;
     public string messageText; // TODO: pull from array of random messages
-    public float distance = 1f; // how far away before the question is asked
+    public float distance = 3f; // how far away before the question is asked
 
     private Transform canvas;
     private GameObject target;
