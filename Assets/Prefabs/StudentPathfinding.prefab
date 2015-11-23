@@ -2446,6 +2446,7 @@ MonoBehaviour:
   vital: 0
   stopRadius: 3
   waitTime: 1
+  targetv: {x: 0, y: 0, z: 0}
   target: {fileID: 0}
   graph: {fileID: 0}
 --- !u!114 &11424832
@@ -2461,8 +2462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: .5
   vital: 0
-  circleRadius: 6
-  wanderStrength: 10
+  circleRadius: 10
+  wanderStrength: .400000006
   wanderAngle: 0
   angleChange: 1
 --- !u!114 &11434518
@@ -2480,6 +2481,7 @@ MonoBehaviour:
   - {fileID: 11418140}
   - {fileID: 11469226}
   - {fileID: 11410806}
+  - {fileID: 11424832}
 --- !u!114 &11435346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2495,6 +2497,11 @@ MonoBehaviour:
   state: 0
   target: {fileID: 0}
   targetLastKnownPos: {x: 0, y: 0, z: 0}
+  pathfind: {fileID: 11418140}
+  wander: {fileID: 11424832}
+  sight: {fileID: 11410806}
+  followtime: 0
+  stopRadius: 3
 --- !u!114 &11442120
 MonoBehaviour:
   m_ObjectHideFlags: 1
