@@ -15,7 +15,10 @@ public class Sightline : BaseBehavior {
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(this.transform.position, target.transform.position - this.transform.position, out hit, distance) && hit.collider.tag == "Player") {
             pathfind.scale = 0.6f;
-            this.scale = 0f;
+            this.scale = 1f;
+        }
+        else {
+            this.scale = 0.1f;
         }
         return Vector3.zero;
     }

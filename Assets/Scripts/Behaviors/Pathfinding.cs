@@ -9,6 +9,7 @@ using PriorityQueue;
 public class Pathfinding : BaseBehavior {
     public float stopRadius = 3f;
     public float waitTime = 1f; // how long to wait between each A* call
+    public Vector3 targetv;
 	public GameObject target;
     public Graph graph;
 
@@ -115,15 +116,20 @@ public class Pathfinding : BaseBehavior {
     }
 
     public override Vector3 ComputeVelocity() {
+        if (this.GetComponent<Communication>().state != StudentState.Wander) {
+            targetv = this.GetComponent<Communication>().targetLastKnownPos;
+        } else {
+            return Vector3.zero;
+        }
         // If close enough to target, stop moving
-        float distance = Vector3.Distance(target.transform.position, this.transform.position);
+        float distance = Vector3.Distance(targetv, this.transform.position);
         if (distance <= stopRadius) {
             return Vector3.zero;
         }
 
         if (waitTimer <= 0f) {
             // Run A* to find shortest path to target
-            ComputePath(this.transform.position, target.transform.position);
+            ComputePath(this.transform.position, targetv);
             waitTimer = waitTime;
         } else {
             waitTimer -= 1f * Time.deltaTime;

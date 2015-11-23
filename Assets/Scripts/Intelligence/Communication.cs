@@ -17,6 +17,13 @@ public class Communication : MonoBehaviour {
     public StudentState state;
     public GameObject target;
     public Vector3 targetLastKnownPos = Vector3.zero;
+    public BaseBehavior pathfind;
+    public BaseBehavior wander;
+    public BaseBehavior sight;
+    public int followtime;
+    private float wscale = 0.5f;
+    private float pscale = 0.6f;
+    public float stopRadius = 3f;
 
     private List<Communication> groupMembers;
 
@@ -36,12 +43,42 @@ public class Communication : MonoBehaviour {
     void Update () {
         switch (state) {
             case StudentState.Wander:
+                if (sight.scale > 0.5f) {
+                    state = StudentState.Follow;
+                    targetLastKnownPos = target.transform.position;
+                    PingGroup(target.transform.position);
+                    wander.scale = 0f;
+                    pathfind.scale = pscale;
+                } else {
+                    wander.scale = wscale;
+                    pathfind.scale = 0f;
+                }
                 break;
 
             case StudentState.Follow:
+                if (sight.scale > 0.5f) {
+                    targetLastKnownPos = target.transform.position;
+                } else {
+                    state = StudentState.Seeking;
+                }
+                pathfind.scale = pscale;
+                wander.scale = 0f;
+                followtime++;
+                if (followtime > 20) {
+                    PingGroup(target.transform.position);
+                    followtime = 0;
+                }
                 break;
 
             case StudentState.Seeking:
+                pathfind.scale = pscale;
+                wander.scale = 0f;
+                followtime = 0;
+                if (Vector3.Distance(targetLastKnownPos, this.transform.position) < stopRadius) {
+                    AntiPingGroup();
+                    wander.scale = wscale;
+                    pathfind.scale = 0f;
+                }
                 break;
         }
     }
@@ -49,10 +86,18 @@ public class Communication : MonoBehaviour {
     // message all groups with target's location
     void PingGroup(Vector3 targetPos) {
         foreach (Communication groupMember in groupMembers) {
-            if (groupMember.state != StudentState.Follow) {
-                groupMember.targetLastKnownPos = targetPos;
-                groupMember.state = StudentState.Seeking;
-            }
+            groupMember.targetLastKnownPos = targetPos;
+            groupMember.state = StudentState.Seeking;
+        }
+    }
+
+    // message all groups that target is not at location
+    void AntiPingGroup() {
+        foreach (Communication groupMember in groupMembers) {
+            groupMember.targetLastKnownPos = Vector3.zero;
+            groupMember.state = StudentState.Wander;
+            groupMember.pathfind.scale = 0f;
+            groupMember.wander.scale = wscale;
         }
     }
 

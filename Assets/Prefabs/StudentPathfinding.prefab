@@ -979,6 +979,8 @@ GameObject:
   - 114: {fileID: 11469226}
   - 114: {fileID: 11442120}
   - 114: {fileID: 11410806}
+  - 114: {fileID: 11435346}
+  - 114: {fileID: 11424832}
   m_Layer: 0
   m_Name: StudentPathfinding
   m_TagString: Collide
@@ -2446,6 +2448,23 @@ MonoBehaviour:
   waitTime: 1
   target: {fileID: 0}
   graph: {fileID: 0}
+--- !u!114 &11424832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d611e25ea241464898b02f744e9d4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: .5
+  vital: 0
+  circleRadius: 6
+  wanderStrength: 10
+  wanderAngle: 0
+  angleChange: 1
 --- !u!114 &11434518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2461,6 +2480,21 @@ MonoBehaviour:
   - {fileID: 11418140}
   - {fileID: 11469226}
   - {fileID: 11410806}
+--- !u!114 &11435346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909bd4f3ca53eb44cb19e1d23e5a4008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupId: 0
+  state: 0
+  target: {fileID: 0}
+  targetLastKnownPos: {x: 0, y: 0, z: 0}
 --- !u!114 &11442120
 MonoBehaviour:
   m_ObjectHideFlags: 1
