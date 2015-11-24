@@ -663,6 +663,7 @@ GameObject:
   - 114: {fileID: 11468624}
   - 114: {fileID: 11454430}
   - 114: {fileID: 11478798}
+  - 114: {fileID: 11438292}
   m_Layer: 0
   m_Name: Professor
   m_TagString: Player
@@ -2413,6 +2414,17 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &11438292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644333373f532f8469d8e17b2c49a550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11444856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2758,6 +2770,10 @@ Prefab:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 9579096}
+    - target: {fileID: 0}
+      propertyPath: messagePrefab
+      value: 
+      objectReference: {fileID: 189014, guid: 8bd1ab480b9a4e84fb81e9315d09f023, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149790}

@@ -9,14 +9,12 @@ public class Question : BaseStudent {
     public GameObject messagePrefab;
     public float distance = 3f; // how far away before the question is asked
 
-    private Transform canvas;
     private bool askedQuestion = false; // TODO: add countdown before they ask another question
-
     private int lastUpdatedTarget = 20;
 
     // Use this for initialization
     void Start() {
-        canvas = GameObject.FindWithTag("Canvas").transform;
+        UIMessage.SetMessagePrefab(messagePrefab);
     }
 
     // Update is called once per frame
@@ -35,23 +33,10 @@ public class Question : BaseStudent {
         }
     }
 
-     // Create text message
-    private GameObject CreateMessage(string text, Vector3 offset, float duration) {
-        GameObject message = Instantiate(messagePrefab) as GameObject;
-        message.transform.SetParent(canvas, false);
-        message.transform.localPosition = offset;
-        UIMessage uiMessage = message.GetComponent<UIMessage>();
-        uiMessage.messageText = text;
-        uiMessage.duration = duration;
-        return message;
-    }
 
 
     private void AskQuestion() {
-        string text = Question.RandomQuestion;
-        Vector3 offset = new Vector3(Random.Range(-300f, 300f), Random.Range(-200f, 200f), 0f); // generate random offset
-        float duration = Random.Range(3f, 5f); // random duration between 3-5s
-        CreateMessage(text, offset, duration);
+        UIMessage.CreateMessage(Question.RandomQuestion);
         askedQuestion = true;
     }
 

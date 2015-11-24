@@ -52,7 +52,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 107704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -822479833, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: c9399c91f0218e34fa2b9931691355f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_NetworkPort: 7777
@@ -105,13 +105,18 @@ MonoBehaviour:
   matchMaker: {fileID: 0}
   matchName: default
   matchSize: 4
+  messagePrefab: {fileID: 189014, guid: 8bd1ab480b9a4e84fb81e9315d09f023, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: messagePrefab
+      value: 
+      objectReference: {fileID: 189014, guid: 8bd1ab480b9a4e84fb81e9315d09f023, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107704}
