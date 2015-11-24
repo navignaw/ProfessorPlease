@@ -662,6 +662,7 @@ GameObject:
   - 114: {fileID: 11415364}
   - 114: {fileID: 11468624}
   - 114: {fileID: 11454430}
+  - 114: {fileID: 11478798}
   m_Layer: 0
   m_Name: Professor
   m_TagString: Player
@@ -2328,7 +2329,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100098}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2494,6 +2495,17 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: .300000012
+--- !u!114 &11478798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259d3fd3732118c4aa868fb248e93807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13615390
 CapsuleCollider:
   m_ObjectHideFlags: 1
