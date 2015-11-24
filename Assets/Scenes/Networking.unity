@@ -195,6 +195,10 @@ Prefab:
       propertyPath: m_Name
       value: StudentWander (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11497624, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
+      propertyPath: m_ParameterSendBits
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
   m_IsPrefabParent: 0
@@ -260,6 +264,10 @@ Prefab:
     - target: {fileID: 113348, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
       propertyPath: m_Name
       value: StudentWander (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497624, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
+      propertyPath: m_ParameterSendBits
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
@@ -923,6 +931,10 @@ Prefab:
     - target: {fileID: 11406422, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
       propertyPath: dist
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11497624, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
+      propertyPath: m_ParameterSendBits
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}

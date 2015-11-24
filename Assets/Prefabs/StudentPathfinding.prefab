@@ -981,6 +981,7 @@ GameObject:
   - 114: {fileID: 11410806}
   - 114: {fileID: 11435346}
   - 114: {fileID: 11424832}
+  - 114: {fileID: 11431138}
   - 114: {fileID: 11464320}
   - 114: {fileID: 11425192}
   m_Layer: 0
@@ -2488,6 +2489,25 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &11431138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 9529976}
+  m_ParameterSendBits: 0
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &11434518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2812,6 +2832,10 @@ Prefab:
       propertyPath: distance
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Animator
+      value: 
+      objectReference: {fileID: 9529976}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174864}
