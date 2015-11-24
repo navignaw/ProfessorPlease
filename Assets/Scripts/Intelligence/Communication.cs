@@ -12,10 +12,9 @@ public enum StudentState {
 /**
  * Communication script for intelligence module.
  */
-public class Communication : MonoBehaviour {
+public class Communication : BaseStudent {
     public int groupId = 0;
     public StudentState state;
-    public GameObject target;
     public Vector3 targetLastKnownPos = Vector3.zero;
     public BaseBehavior pathfind;
     public BaseBehavior wander;
@@ -26,6 +25,7 @@ public class Communication : MonoBehaviour {
     public float stopRadius = 3f;
 
     private List<Communication> groupMembers;
+    private int lastUpdatedTarget = 20;
 
     // Use this for initialization
     void Start() {
@@ -41,9 +41,17 @@ public class Communication : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if (--lastUpdatedTarget == 0) {
+            FindProfessorTarget();
+            lastUpdatedTarget = 20;
+        }
+        if (target == null) {
+            return;
+        }
+
         switch (state) {
             case StudentState.Wander:
-                if (sight.scale > 0.5f) {
+                if (sight.scale > 0.5f && target != null) {
                     state = StudentState.Follow;
                     targetLastKnownPos = target.transform.position;
                     PingGroup(target.transform.position);
@@ -56,7 +64,7 @@ public class Communication : MonoBehaviour {
                 break;
 
             case StudentState.Follow:
-                if (sight.scale > 0.5f) {
+                if (sight.scale > 0.5f && target != null) {
                     targetLastKnownPos = target.transform.position;
                 } else {
                     state = StudentState.Seeking;
@@ -64,7 +72,7 @@ public class Communication : MonoBehaviour {
                 pathfind.scale = pscale;
                 wander.scale = 0f;
                 followtime++;
-                if (followtime > 20) {
+                if (followtime > 20 && target != null) {
                     PingGroup(target.transform.position);
                     followtime = 0;
                 }

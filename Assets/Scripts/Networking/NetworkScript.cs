@@ -6,14 +6,11 @@ using System.Collections;
 
 public class NetworkScript : NetworkManager
 {
-    public GameObject button;
-
     public static short MSGType = 555;
 
     // Use this for initialization
     void Start()
     {
-        button = GameObject.Find("ToggleButton");
 
     }
 
@@ -25,7 +22,6 @@ public class NetworkScript : NetworkManager
 
     public override void OnStartClient(NetworkClient mClient)
     {
-
         mClient.RegisterHandler(MSGType, OnClientChatMessage);
     }
 
@@ -40,23 +36,11 @@ public class NetworkScript : NetworkManager
 
     private void OnServerChatMessage(NetworkMessage netMsg)
     {
-        IntegerMessage msg = netMsg.ReadMessage<IntegerMessage>();
+        //IntegerMessage msg = netMsg.ReadMessage<IntegerMessage>();
     }
 
     private void OnClientChatMessage(NetworkMessage netMsg)
     {
-        IntegerMessage msg = netMsg.ReadMessage<IntegerMessage>();
-    }
-
-    public static GameObject FindProfessorTarget() {
-        GameObject[] profs = GameObject.FindGameObjectsWithTag("Player");
-        if (profs.Length == 0) {
-            return null;
-        } else if (profs.Length == 1) {
-            return profs[0];
-        }
-
-        // If more than 1 professor, then pick one at random
-        return profs[Random.Range(0, profs.Length)];
+        //IntegerMessage msg = netMsg.ReadMessage<IntegerMessage>();
     }
 }

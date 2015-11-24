@@ -1,31 +1,36 @@
 using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
 /**
  * Asks a question (creating UIMessage) when near professor
  */
-public class Question : MonoBehaviour {
+public class Question : BaseStudent {
     public GameObject messagePrefab;
     public float distance = 3f; // how far away before the question is asked
 
     private Transform canvas;
-    private GameObject target;
     private bool askedQuestion = false; // TODO: add countdown before they ask another question
+
+    private int lastUpdatedTarget = 20;
 
     // Use this for initialization
     void Start() {
         canvas = GameObject.FindWithTag("Canvas").transform;
-        target = NetworkScript.FindProfessorTarget();
     }
 
     // Update is called once per frame
     void Update () {
+        if (--lastUpdatedTarget == 0) {
+            FindProfessorTarget();
+            lastUpdatedTarget = 20;
+        }
         if (target == null) {
-            target = NetworkScript.FindProfessorTarget();
             return;
         }
 
-        if (!askedQuestion && Vector3.Distance(this.transform.position, target.transform.position) <= distance) {
+        NetworkIdentity nIdentity = target.GetComponent<NetworkIdentity>();
+        if (!askedQuestion && nIdentity.isLocalPlayer && Vector3.Distance(this.transform.position, target.transform.position) <= distance) {
             AskQuestion();
         }
     }
