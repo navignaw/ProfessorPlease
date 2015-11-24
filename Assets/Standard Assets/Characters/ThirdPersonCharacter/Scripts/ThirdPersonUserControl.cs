@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
@@ -13,9 +14,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
-        
         private void Start()
         {
+            // Disable if character not owned by client
+            NetworkIdentity n_identity = GetComponent<NetworkIdentity>();
+            if (n_identity != null && !n_identity.isLocalPlayer) {
+                enabled = false;
+            }
+
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -28,7 +34,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 // we use self-relative controls in this case, which probably isn't what the user wants, but hey, we warned them!
             }
 
-            // get the third person character ( this should never be null due to require component )
+            // get the third person character (this should never be null due to require component)
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
 
