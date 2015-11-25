@@ -7,7 +7,6 @@ using System.Collections;
 public class ReachGoal : BaseBehavior {
     public float stopRadius = 3f;
     public bool lookAhead = true;
-	public GameObject target;
     private Rigidbody _targetRigidbody;
 
     private void Start() {

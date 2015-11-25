@@ -69,7 +69,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Title
-  m_OnlineScene: Networking
+  m_OnlineScene: Planning
   m_SpawnPrefabs:
   - {fileID: 174864, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
   - {fileID: 113348, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}

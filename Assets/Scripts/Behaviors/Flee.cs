@@ -6,7 +6,6 @@ using System.Collections;
  */
 public class Flee : BaseBehavior {
     public float stopRadius = 15f;
-	public GameObject target;
     public BaseBehavior idleBehavior;
 
     public override Vector3 ComputeVelocity() {

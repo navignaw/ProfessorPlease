@@ -8,6 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/Title.unity
   - enabled: 1
-    path: Assets/Scenes/Game/Level1.unity
-  - enabled: 1
-    path: Assets/Scenes/Networking.unity
+    path: Assets/Scenes/Planning.unity

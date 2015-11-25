@@ -10,7 +10,6 @@ public class Pathfinding : BaseBehavior {
     public float stopRadius = 3f;
     public float waitTime = 1f; // how long to wait between each A* call
     public Vector3 targetv;
-	public GameObject target;
     public Graph graph;
 
     private List<Vector3> path;

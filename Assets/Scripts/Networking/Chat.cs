@@ -28,9 +28,6 @@ public class Chat : NetworkBehaviour {
     }
 
     void OnGUI() {
-        if (!isLocalPlayer) {
-            return;
-        }
         GUILayout.BeginHorizontal(GUILayout.Width(300));
         currentMessage = GUILayout.TextField(currentMessage);
         if (Event.current.keyCode == KeyCode.Return) {
