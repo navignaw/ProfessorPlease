@@ -69,16 +69,25 @@ public class Communication : BaseStudent {
                 } else {
                     state = StudentState.Seeking;
                 }
+
                 pathfind.scale = pscale;
                 wander.scale = 0f;
-                followtime++;
-                if (followtime > 20 && target != null) {
+                if (++followtime > 20 && target != null) {
                     PingGroup(target.transform.position);
                     followtime = 0;
                 }
                 break;
 
             case StudentState.Seeking:
+                if (sight.scale > 0.5f && target != null) {
+                    state = StudentState.Follow;
+                    targetLastKnownPos = target.transform.position;
+                    PingGroup(target.transform.position);
+                    wander.scale = 0f;
+                    pathfind.scale = pscale;
+                    break;
+                }
+
                 pathfind.scale = pscale;
                 wander.scale = 0f;
                 followtime = 0;
