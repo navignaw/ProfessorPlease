@@ -1,42 +1,54 @@
 ﻿Professor Please
-15-466 P2: Pathfinding Documentation
+15-466 P3: Intelligence Documentation
 Anna Etzel (aetzel), Ivan Wang (icw), Jun Huo (jhuo)
 
 
 Overview
 ========
-In this project, ten student characters with the Pathfinding.cs behavior track and follow the professor (player character) in real time via A* graph search.
-
-As in P1, every character prefab GameObject contains Movement.cs, the master class which takes other behavior scripts and scales them appropriately. The resultant vector is applied to ThirdPersonCharacter.Move, a script from Unity standard assets that applies movement to the character.
-
-
+We chose to implement Planning-based Decision Making to create smarter AI's for students in our game. Specifically, we want students to plan their movement via communication with each other. Together as a group, students will search for the professor and message each other about his last known location.
 Testing
-=======
-This project has one relevant scene, a maze of corridors, ramps, and bridges (Scenes/Pathfinding.unity). The Professor character is player-controlled by the arrow keys and can jump gaps with the Space bar. All other characters are students who track the professor using pathfinding.
+This project has 2 relevant scenes, Title.unity and Planning.unity. The Professor character is player-controlled by the arrow keys and can jump gaps with the Spacebar. To test, run the Demo/P3Demo.exe file (opening multiple instances for multiplayer), or load the Title scene in the editor.
 
-Included in the Demo/ folder are two videos of the scene. We provide one with Debug.Gizmos on (drawing the nodes and paths each character follows) and one without.
-
+Included in the Demo/ folder is a video simultaneously demonstrating multiplayer and intelligence.
 
 
-Pathfinding
-=========
+Planning-based Decision Making
+========
+Each student in Planning.unity has a Communication.cs behavior script. They are assigned to a group (identified as an integer) and act according to a specific state, via a finite state automaton.
 
-Graph Construction / 3D Planning
-The code for graph construction can be found in Pathfinding/Graph.cs. Essentially, we create a 3D grid where the x and z coordinates (the floor plane) are spaced by a user-defined distance dist, with a separate spacing for the y coordinates (height from floor) to make ramps easier to handle. We also take user-defined start and end coordinates, and create a grid that starts at the specified start coordinates and just exceeds the end coordinates in each direction, if necessary. Then, for every valid point in our map, we raycast to adjacent points, which are those north, south, east, and west on the current layer, the layer above, and the layer below. If that raycast does not hit the walls or floors, we consider those points a potential path and put them in a neighbor adjacency list for our later A* search.
+State 1: Wander
+In the WANDER state, neither the student nor his/her groupmates know where the professor's location is. They simply walk around or pause to idle about their homework questions. If the student sees a professor or receives a ping from a friend, they transition to a different state.
 
-To determine if a point is valid or not, we do a raycast downwards to see if the point is within the distance dist from the floor. We also do a "ledge" check to ensure that the point is not so close to the edge that characters doing pathfinding will fall off of them. This involves casting rays downwards from points a short distance (defined as checkwidth) away from the original point in each cardinal direction. At least one opposing pair must be the same distance away from the ground as the original raycast, as all ramps are facing in a cardinal direction. The other pair must both be within a range determined by the maximum slope a ramp can be (approximately 0.5 in our map). If these tests pass, the point is marked valid and can be a neighbor/have neighbors in the neighbor array.
+State 2: Follow
+In the FOLLOW state, the student has seen the professor and is following them around with questions. When he/she first sees the professor, the student will ping all the friends in their group who are wandering around, updating them with the last known location of the professor.
 
-
-A* Search
-After the graph is constructed, we perform A* to find the best path (see Pathfinding.cs). The algorithm runs the shortest path algorithm while keeping track of a visited set of nodes, a priority queue "frontier" of nodes to explore, and a map of nodes to parents (the predecessor each node was visited from). While the frontier is non-empty, the closest node is popped off and unvisited neighbors are added to the frontier with a priority of their distance plus a heuristic value. We use a basic heuristic calculated based off Euclidean distance to the target.
-
-When A* has found the target, the algorithm terminates and the path is reconstructed by following the parent map backwards from the target. The path is slightly modified to improve realism of motion. First, any nodes behind the character are removed. Next, we delete intermediate nodes (shortcutting) if there is a straighter path that doesn't use them; this smooths out zigzags that naturally form from a grid-based path. The resultant path is saved to the character so they can follow it in subsequent frames. We compute the path every few frames for performance reasons.
-
-
-3D Planning
-The algorithm above is naturally extended to 3D simply by changing the graph structure. To account for ramps and heights, we mark nodes as "active" if a raycast down hits the floor within a certain threshold. Otherwise, it is "inactive". This allows us to ignore inactive nodes that float in space and should not be accessible (e.g. above the character's head). When computing neighbors, we now fire rays in 12 directions (left, right, forward, back in the planes above, middle, and below each node). This allows us to create edges between diagonal active nodes (i.e. ramps).
+State 3: Seeking
+In the SEEKING state, the student has received a ping about the professor's last known location from his/her friends. They will pathfind towards that location until they either see the professor (and switch to FOLLOW), or arrive. Upon arrival, they will switch back to WANDER and alert their groupmates that the professor is no longer there.
 
 
-Collision Avoidance
-=========
-In addition to pathfinding, we utilize a collision avoidance script (Collision.cs). If a character sees another tagged with "Collide" in the middle of pathfinding, they will turn to avoid them, straying off the path briefly. Once the character is no longer in the line of sight, they will recompute a path and continue the path following.
+The demo contains 3 groups of students. When any one student sees a professor, the others in the group will be messaged and they will all swarm towards the professor's last known location.
+
+
+Multiplayer
+========
+Using Unity's NetworkManager, we set up the scene to allow for multiple clients to connect to a server. Different players can control multiple professors who must run around avoiding students' questions.
+
+Each player is set up as a Professor prefab, controlled in each client. Their movement is enabled only for the owner client (referenced via NetworkBehaviour.isLocalPlayer). This is synced to the server and broadcast to other clients. Students, on the other hand, run movement behaviors only on the server, and propagate their transforms and animations to the other clients.
+
+We modified student behavior such that they now target the nearest professor, iterating through all GameObjects which contain the “Player” tag. Questions now spawn only on the screen of the player who is targeted, rather than all professors' screens. In addition, the game ends when the first professor loses, rather than all of them.
+Chat
+Using a GUILayout text box, players can now send messages in multiplayer. When there are at least 2 players online, the chat box appears (see Chat.cs). Typed messages are sent to the server and broadcast to all players. When received, the message will appear as a speech bubble (as if the other professor is asking them a question).
+
+
+Additional Features (UI)
+========================
+
+In addition to the features above, we implemented the following:
+
+Title screen
+========
+An extra scene, Title.unity, opens into the game when the player presses a key. The networking code is set up to create a server or connect a client in this scene.
+
+Speech bubbles
+========
+We added speech bubbles for the students' questions when they approach the professor. Each student chooses a random question from a predefined array of choices, and the bubble pops up at a random location on the screen. When there are more than some constant number of bubbles blocking the screen, the player loses.
