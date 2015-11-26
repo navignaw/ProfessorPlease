@@ -355,6 +355,10 @@ Prefab:
       propertyPath: m_ParameterSendBits
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 11435346, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
+      propertyPath: groupId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
   m_IsPrefabParent: 0
@@ -735,7 +739,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435346, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: groupId
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11431138, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: m_ParameterSendBits
@@ -992,7 +996,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435346, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: groupId
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11431138, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: m_ParameterSendBits
@@ -1511,7 +1515,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435346, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: groupId
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11431138, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: m_ParameterSendBits
@@ -1825,6 +1829,10 @@ Prefab:
     - target: {fileID: 11431138, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: m_ParameterSendBits
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435346, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
+      propertyPath: groupId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
@@ -2603,7 +2611,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11435346, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: groupId
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11431138, guid: 7be8e7eb41c0a984b9310ee71c0d402e, type: 2}
       propertyPath: m_ParameterSendBits

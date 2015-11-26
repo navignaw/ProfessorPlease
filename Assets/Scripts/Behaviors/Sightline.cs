@@ -16,7 +16,6 @@ public class Sightline : BaseBehavior {
             return Vector3.zero;
         }
 
-        Debug.Log("target is not null");
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(this.transform.position, target.transform.position - this.transform.position, out hit, distance) && hit.collider.tag == "Player") {
             pathfind.scale = 0.6f;
