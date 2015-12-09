@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 
 /**
@@ -29,11 +28,8 @@ public class BaseStudent : MonoBehaviour {
 
         target = null;
         foreach (GameObject prof in profs) {
-            NetworkIdentity nIdentity = prof.GetComponent<NetworkIdentity>();
-            if (nIdentity.isLocalPlayer) {
-                target = prof;
-                return;
-            }
+            target = prof;
+            return;
         }
     }
 }

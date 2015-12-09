@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Networking;
 using System.Collections;
 
 /**
@@ -27,8 +26,7 @@ public class Question : BaseStudent {
             return;
         }
 
-        NetworkIdentity nIdentity = target.GetComponent<NetworkIdentity>();
-        if (!askedQuestion && nIdentity.isLocalPlayer && Vector3.Distance(this.transform.position, target.transform.position) <= distance) {
+        if (!askedQuestion && Vector3.Distance(this.transform.position, target.transform.position) <= distance) {
             AskQuestion();
         }
     }

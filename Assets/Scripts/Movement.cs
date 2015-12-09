@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityStandardAssets.Characters.ThirdPerson;
 using System.Collections;
 
@@ -7,10 +6,9 @@ using System.Collections;
  * Master class that combines movement vectors from various other scripts
  */
 [RequireComponent(typeof (ThirdPersonCharacter))]
-public class Movement : NetworkBehaviour {
+public class Movement : MonoBehaviour {
     public BaseBehavior[] behaviors;
 
-    [SyncVar]
     private ThirdPersonCharacter character;
 
     // Use this for initialization
@@ -20,9 +18,6 @@ public class Movement : NetworkBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!isServer) {
-            return;
-        }
 
         Vector3 normalVelocity = Vector3.zero;
         Vector3 vitalVelocity = Vector3.zero;
