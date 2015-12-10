@@ -981,9 +981,6 @@ GameObject:
   - 114: {fileID: 11410806}
   - 114: {fileID: 11435346}
   - 114: {fileID: 11424832}
-  - 114: {fileID: 11431138}
-  - 114: {fileID: 11464320}
-  - 114: {fileID: 11425192}
   m_Layer: 0
   m_Name: StudentPathfinding
   m_TagString: Collide
@@ -1606,7 +1603,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144682}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1750,9 +1747,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174864}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: 0, z: 12.3000002}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: -15, y: 0, z: -10}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 420408}
   - {fileID: 478840}
@@ -2429,9 +2426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa7129e79358a14499940b757d87a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 1
+  scale: .100000001
   vital: 0
-  target: {fileID: 0}
   distance: 50
   pathfind: {fileID: 11418140}
 --- !u!114 &11418140
@@ -2450,7 +2446,6 @@ MonoBehaviour:
   stopRadius: 3
   waitTime: 1
   targetv: {x: 0, y: 0, z: 0}
-  target: {fileID: 0}
   graph: {fileID: 0}
 --- !u!114 &11424832
 MonoBehaviour:
@@ -2469,45 +2464,6 @@ MonoBehaviour:
   wanderStrength: .400000006
   wanderAngle: 0
   angleChange: 1
---- !u!114 &11425192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: .100000001
-  m_SyncRotationAxis: 2
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: .00100000005
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &11431138
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1590678366, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 9529976}
-  m_ParameterSendBits: 0
-  param0: 
-  param1: 
-  param2: 
-  param3: 
-  param4: 
-  param5: 
 --- !u!114 &11434518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2537,7 +2493,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groupId: 0
   state: 0
-  target: {fileID: 0}
   targetLastKnownPos: {x: 0, y: 0, z: 0}
   pathfind: {fileID: 11418140}
   wander: {fileID: 11424832}
@@ -2557,38 +2512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messagePrefab: {fileID: 189014, guid: 8bd1ab480b9a4e84fb81e9315d09f023, type: 2}
   distance: 3
---- !u!114 &11464320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 123
-    i1: 232
-    i2: 231
-    i3: 235
-    i4: 65
-    i5: 192
-    i6: 169
-    i7: 132
-    i8: 185
-    i9: 49
-    i10: 14
-    i11: 231
-    i12: 28
-    i13: 13
-    i14: 64
-    i15: 46
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11469226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2782,7 +2705,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: scale
-      value: 1
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: behaviors.Array.data[0]
@@ -2836,6 +2759,18 @@ Prefab:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 9529976}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174864}
