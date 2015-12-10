@@ -51,6 +51,21 @@ public class Question : BaseStudent {
         "Professor, I was deathly ill last night with hypothermia. Can I please get an extension?",
         "Professor, I was super drunk at a party last night. Can I please get an extension?",
         "Professor, are you single? My friend is really interested in taking you out to lunch...",
+        "Professor, can you explain the Naive Bayes classifier to me?",
+        "Professor, can you explain bounding volume hierarchies to me?",
+        "Professor, can you explain finite state automata to me?",
+        "Professor, can you explain alpha-beta pruning to me?",
+        "Professor, is there anything I can do to pass this class?",
+        "Professor, I don't understand local perception filters.",
+        "Professor, I don't understand broadband collision detection!",
+        "Professor, I don't get uniform spatial subdivision!",
+        "Professor, I don't get skeletonization or Voronoi diagrams!",
+        "Professor, I'm pretty sure I got this answer on the test right.",
+        "Professor, I think there's a mistake with my attendance grade.",
+        "Professor, I think there's a mistake with my participation grade.",
+        "Professor, will the class be curved?",
+        "Professor, will the midterm be curved?",
+        "Professor, what is your favorite game programming algorithm?"
     };
 
     private static string RandomQuestion {
