@@ -36,9 +36,8 @@ public class Question : BaseStudent {
 
     private void AskQuestion() {
         if (text.Length > 0) {
-            UIMessage.CreateMessage(text[textCounter]);
-            if (textCounter < text.Length - 1) {
-                textCounter++;
+            if (textCounter < text.Length) {
+                UIMessage.CreateMessage(text[textCounter++]);
             }
         } else {
             UIMessage.CreateMessage(Question.RandomQuestion);

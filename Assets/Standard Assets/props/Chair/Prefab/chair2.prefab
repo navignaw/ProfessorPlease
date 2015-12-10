@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 64: {fileID: 6408620}
+  - 65: {fileID: 6505130}
   m_Layer: 0
   m_Name: chair2
   m_TagString: Untagged
@@ -62,8 +62,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: f0f4f1f5bbf6a40429df2887046f891a, type: 3}
---- !u!64 &6408620
-MeshCollider:
+--- !u!65 &6505130
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: f0f4f1f5bbf6a40429df2887046f891a, type: 3}
+  m_Size: {x: .0374165326, y: .100000001, z: .0368297324}
+  m_Center: {x: 0, y: .0500000007, z: -1.86264515e-09}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -109,6 +109,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

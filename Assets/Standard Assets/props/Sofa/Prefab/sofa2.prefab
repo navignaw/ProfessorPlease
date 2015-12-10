@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 64: {fileID: 6411730}
+  - 65: {fileID: 6559980}
   m_Layer: 0
   m_Name: sofa2
   m_TagString: Untagged
@@ -62,8 +62,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 2a35eab918abf3b4f9859993a11f52c5, type: 3}
---- !u!64 &6411730
-MeshCollider:
+--- !u!65 &6559980
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 2a35eab918abf3b4f9859993a11f52c5, type: 3}
+  m_Size: {x: .0829447955, y: .100000001, z: .0661641657}
+  m_Center: {x: 0, y: .0500000007, z: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -109,6 +109,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
