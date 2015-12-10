@@ -9,8 +9,10 @@ public class Question : BaseStudent {
 
     public GameObject messagePrefab;
     public float distance = 3f; // how far away before the question is asked
+    public string[] text;
 
     private float lastAsked = 0f; // how long since last question was asked
+    private int textCounter = 0;
 
     // Use this for initialization
     void Start() {
@@ -33,7 +35,14 @@ public class Question : BaseStudent {
     }
 
     private void AskQuestion() {
-        UIMessage.CreateMessage(Question.RandomQuestion);
+        if (text.Length > 0) {
+            UIMessage.CreateMessage(text[textCounter]);
+            if (textCounter < text.Length - 1) {
+                textCounter++;
+            }
+        } else {
+            UIMessage.CreateMessage(Question.RandomQuestion);
+        }
 
         if (++numMessages >= GameOver.gameOverCount) {
             GameOver.Lose();
