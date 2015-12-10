@@ -8,6 +8,7 @@ using System.Collections;
 public class Collision : BaseBehavior {
     public float dist;
     public string collisionTag = "Wall";
+    public string collisionTag2 = "";
     private int lastChanged = 0;
 
     public override Vector3 ComputeVelocity() {
@@ -31,7 +32,7 @@ public class Collision : BaseBehavior {
             Physics.Raycast(newpos, forward3, out hit, dist) ||
             Physics.Raycast(newpos, forward4, out hit, dist) ||
             Physics.Raycast(newpos, forward5, out hit, dist)) {
-            if (hit.collider.tag == collisionTag) {
+            if (hit.collider.tag == collisionTag || hit.collider.tag == collisionTag2) {
                 collisionForce = qRot * forward1;
                 lastChanged = 50;
             }
