@@ -7,11 +7,12 @@ using System.Collections;
 public class Question : BaseStudent {
     public static int numMessages = 0; // how many questions are active
 
+    public GameOver gameOver;
     public GameObject messagePrefab;
     public float distance = 3f; // how far away before the question is asked
     public string[] text;
 
-    private float lastAsked = 0f; // how long since last question was asked
+    private float lastAsked = 3f; // how long since last question was asked
     private int textCounter = 0;
 
     // Use this for initialization
@@ -43,7 +44,7 @@ public class Question : BaseStudent {
             UIMessage.CreateMessage(Question.RandomQuestion);
         }
 
-        if (++numMessages >= GameOver.gameOverCount) {
+        if (++numMessages >= GameOver.GameOverCount) {
             numMessages = 0;
             GameOver.Lose();
         }
