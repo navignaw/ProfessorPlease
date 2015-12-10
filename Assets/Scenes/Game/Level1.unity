@@ -1190,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49493fd7a69ea0b4e98c0cffcc01b4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverCount: 3
+  gameOverCount: 4
 --- !u!1001 &825818608
 Prefab:
   m_ObjectHideFlags: 0

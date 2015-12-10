@@ -18,6 +18,7 @@ public class Question : BaseStudent {
 
     // Use this for initialization
     void Start() {
+        Question.numMessages = 0;
         UIMessage.SetMessagePrefab(messagePrefab);
         FindProfessorTarget();
     }
@@ -46,7 +47,6 @@ public class Question : BaseStudent {
         }
 
         if (++numMessages >= GameOver.GameOverCount) {
-            numMessages = 0;
             GameOver.Lose();
         }
     }
