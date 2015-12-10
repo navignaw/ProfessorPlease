@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 64: {fileID: 6400040}
+  - 65: {fileID: 6503034}
   m_Layer: 0
   m_Name: desk2
   m_TagString: Wall
@@ -62,8 +62,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: be6b0dbef9a641f479776759c57a7d19, type: 3}
---- !u!64 &6400040
-MeshCollider:
+--- !u!65 &6503034
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,8 +72,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: be6b0dbef9a641f479776759c57a7d19, type: 3}
+  m_Size: {x: .090229705, y: .100000001, z: .0526563302}
+  m_Center: {x: 8.68607312e-05, y: .0500000007, z: .0023558652}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -113,6 +113,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
