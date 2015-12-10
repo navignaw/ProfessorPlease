@@ -44,6 +44,7 @@ public class Question : BaseStudent {
         }
 
         if (++numMessages >= GameOver.gameOverCount) {
+            numMessages = 0;
             GameOver.Lose();
         }
     }

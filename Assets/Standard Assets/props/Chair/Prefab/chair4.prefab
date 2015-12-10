@@ -14,7 +14,7 @@ GameObject:
   - 65: {fileID: 6519122}
   m_Layer: 0
   m_Name: chair4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +121,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Size.y
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

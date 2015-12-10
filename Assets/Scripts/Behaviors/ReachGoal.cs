@@ -10,6 +10,7 @@ public class ReachGoal : BaseBehavior {
     private Rigidbody _targetRigidbody;
 
     private void Start() {
+        FindProfessorTarget();
         _targetRigidbody = target.GetComponent<Rigidbody>();
     }
 
