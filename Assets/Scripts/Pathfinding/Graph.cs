@@ -70,7 +70,7 @@ public class Graph : MonoBehaviour {
             valid[i] = new bool[ygrid + 1][];
             for (j = 0; j <= ygrid; j++) {
                 valid[i][j] = new bool[zgrid + 1];
-                for (k = 0; k <= zgrid; k++) {
+                for (k = zgrid; k >= 0; k--) {
                     Vector3 currpos = new Vector3(startx + i*dist, starty + j*vdist, startz + k*dist);
                     if (Physics.Raycast(currpos, Vector3.down, out hit, vdist) && hit.collider.tag == collisionTag) {
                         float toGround = hit.distance;
@@ -90,6 +90,7 @@ public class Graph : MonoBehaviour {
                     } else {
                         valid[i][j][k] = false;
                     }
+                    continue;
                 }
             }
         }
