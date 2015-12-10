@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 /**
- * Bird's eye view player follow camera script.
+ * Switch scenes on trigger.
  */
 public class NextLevel : MonoBehaviour {
     public int nextLevel;

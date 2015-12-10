@@ -56,5 +56,6 @@ public class UIMessage : MonoBehaviour {
 
     void CloseMessage() {
         Destroy(gameObject);
+        Question.numMessages--;
     }
 }

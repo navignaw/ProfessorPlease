@@ -5,37 +5,39 @@ using System.Collections;
  * Asks a question (creating UIMessage) when near professor
  */
 public class Question : BaseStudent {
+    public static int numMessages = 0; // how many questions are active
+
     public GameObject messagePrefab;
     public float distance = 3f; // how far away before the question is asked
 
-    private bool askedQuestion = false; // TODO: add countdown before they ask another question
-    private int lastUpdatedTarget = 20;
+    private float lastAsked = 0f; // how long since last question was asked
 
     // Use this for initialization
     void Start() {
         UIMessage.SetMessagePrefab(messagePrefab);
+        FindProfessorTarget();
     }
 
     // Update is called once per frame
     void Update () {
-        if (--lastUpdatedTarget == 0) {
-            FindProfessorTarget();
-            lastUpdatedTarget = 20;
-        }
         if (target == null) {
             return;
         }
 
-        if (!askedQuestion && Vector3.Distance(this.transform.position, target.transform.position) <= distance) {
+        if (lastAsked <= 0 && Vector3.Distance(this.transform.position, target.transform.position) <= distance) {
             AskQuestion();
+            lastAsked = 5f;
+        } else if (lastAsked > 0) {
+            lastAsked -= Time.deltaTime;
         }
     }
 
-
-
     private void AskQuestion() {
         UIMessage.CreateMessage(Question.RandomQuestion);
-        askedQuestion = true;
+
+        if (++numMessages >= GameOver.gameOverCount) {
+            GameOver.Lose();
+        }
     }
 
     private static string[] Questions = new string[] {
