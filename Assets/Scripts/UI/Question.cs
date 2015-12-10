@@ -43,10 +43,14 @@ public class Question : BaseStudent {
                 UIMessage.CreateMessage(text[textCounter++], offset, duration);
             }
         } else {
-            UIMessage.CreateMessage(Question.RandomQuestion);
+            CreateRandomMessage();
         }
 
         if (++numMessages >= GameOver.GameOverCount) {
+            // add some more random questions
+            Invoke("CreateRandomMessage", Random.Range(0f, 2f));
+            Invoke("CreateRandomMessage", Random.Range(1f, 3f));
+            Invoke("CreateRandomMessage", Random.Range(2f, 4f));
             GameOver.Lose();
         }
     }
@@ -56,11 +60,17 @@ public class Question : BaseStudent {
         "Professor, will infinite Ramsey theory be on the midterm?",
         "Professor, will countable sets be on the midterm?",
         "Professor, will unbounded fan-in circuits be on the midterm?",
+        "Professor, will Vickrey-Clarke-Groves auctions be on the final?",
+        "Professor, will gradient descent be on the final?",
         "Professor, can I get an extension on the homework, please?",
+        "Professor, can I run an idea for my term project by you?",
         "Professor, how many late days do I have left for this lab?",
         "Professor, I'm so sorry but I forgot to turn in my homework yesterday! Can I please turn it in now?",
         "Professor, I was deathly ill last night with hypothermia. Can I please get an extension?",
         "Professor, I was super drunk at a party last night. Can I please get an extension?",
+        "Professor, My dog ate my homework. Can I please get an extension?",
+        "Professor, My pet komodo dragon ate my homework. Can I please get an extension?",
+        "Professor, My pet velociraptor ate my homework. Can I please get an extension?",
         "Professor, are you single? My friend is really interested in taking you out to lunch...",
         "Professor, can you explain the Naive Bayes classifier to me?",
         "Professor, can you explain bounding volume hierarchies to me?",
@@ -71,9 +81,13 @@ public class Question : BaseStudent {
         "Professor, I don't understand broadband collision detection!",
         "Professor, I don't get uniform spatial subdivision!",
         "Professor, I don't get skeletonization or Voronoi diagrams!",
-        "Professor, I'm pretty sure I got this answer on the test right.",
-        "Professor, I think there's a mistake with my attendance grade.",
-        "Professor, I think there's a mistake with my participation grade.",
+        "Professor, what heuristic should I use for real-time adaptive A*?",
+        "Professor, I'm pretty sure I got this answer on the test right. Can you take a look?",
+        "Professor, I think there's a mistake with my attendance grade. Can you fix it?",
+        "Professor, I think there's a mistake with my participation grade. Can you fix it?",
+        "Professor, is it okay if I steal models from the internet for my game?",
+        "Professor, can we get an extra cheat sheet on the exam?",
+        "Professor, when and where is the review session for the final?",
         "Professor, will the class be curved?",
         "Professor, will the midterm be curved?",
         "Professor, what is your favorite game programming algorithm?"
@@ -83,6 +97,10 @@ public class Question : BaseStudent {
         get {
             return Questions[Random.Range(0, Questions.Length)];
         }
+    }
+
+    private void CreateRandomMessage() {
+        UIMessage.CreateMessage(Question.RandomQuestion);
     }
 
 }

@@ -49,7 +49,7 @@ public class UIMessage : MonoBehaviour {
     }
 
     public static GameObject CreateMessage(string text) {
-        Vector3 offset = new Vector3(Random.Range(-250f, 250f), Random.Range(-200f, 200f), 0f); // generate random offset
+        Vector3 offset = new Vector3(Random.Range(-25f, 25f) * 10f, Random.Range(-20f, 20f) * 10f, 0f); // generate random offset
         float duration = Random.Range(3f, 5f); // random duration between 3-5s
         return CreateMessage(text, offset, duration);
     }
