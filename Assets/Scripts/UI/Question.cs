@@ -9,6 +9,8 @@ public class Question : BaseStudent {
 
     public GameOver gameOver;
     public GameObject messagePrefab;
+    public Vector3 offset = Vector3.zero;
+    public float duration = 5f;
     public float distance = 3f; // how far away before the question is asked
     public string[] text;
 
@@ -29,7 +31,7 @@ public class Question : BaseStudent {
 
         if (lastAsked <= 0 && Vector3.Distance(this.transform.position, target.transform.position) <= distance) {
             AskQuestion();
-            lastAsked = 5f;
+            lastAsked = duration;
         } else if (lastAsked > 0) {
             lastAsked -= Time.deltaTime;
         }
@@ -38,7 +40,7 @@ public class Question : BaseStudent {
     private void AskQuestion() {
         if (text.Length > 0) {
             if (textCounter < text.Length) {
-                UIMessage.CreateMessage(text[textCounter++]);
+                UIMessage.CreateMessage(text[textCounter++], offset, duration);
             }
         } else {
             UIMessage.CreateMessage(Question.RandomQuestion);
