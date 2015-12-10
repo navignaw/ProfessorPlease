@@ -7,7 +7,6 @@ using System.Collections;
 public class Question : BaseStudent {
     public static int numMessages = 0; // how many questions are active
 
-    public GameOver gameOver;
     public GameObject messagePrefab;
     public Vector3 offset = Vector3.zero;
     public float duration = 5f;

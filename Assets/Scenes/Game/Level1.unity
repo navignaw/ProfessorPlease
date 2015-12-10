@@ -3550,10 +3550,15 @@ Prefab:
       propertyPath: offset.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11404956, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 768857251}
     m_RemovedComponents:
     - {fileID: 11402594, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
     - {fileID: 11498682, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
     - {fileID: 11406422, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
+    - {fileID: 11450346, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 737dc48d36ee14e4dae5c928aa5c261c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2034690193
