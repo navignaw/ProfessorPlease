@@ -2417,7 +2417,7 @@ MonoBehaviour:
   m_JumpPower: 10
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: .200000003
-  m_MoveSpeedMultiplier: 1
+  m_MoveSpeedMultiplier: .600000024
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: .300000012
 --- !u!136 &13615390
@@ -2687,6 +2687,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_MoveSpeedMultiplier
+      value: .600000024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
